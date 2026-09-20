@@ -15,35 +15,75 @@
       padding: 20px;
     }
 
-    /* ARKA PLAN ŞEFFAF KALKAN AMBLEMİ */
+    /* ARKA PLAN ŞEFFAF KALKAN VE HENTBOL TOPLU AMBLEM */
     .arka-plan-amblem {
       position: fixed;
-      top: 62%; /* Instagram butonunun altında kalacak şekilde konumlandırıldı */
+      top: 60%; /* Sayfa merkezinde dengeli konumlandırma */
       left: 50%;
       transform: translate(-50%, -50%);
-      z-index: -1; /* İçeriklerin arkasında kalmasını sağlar */
+      z-index: -1; /* İçeriklerin arkasında filigran olarak kalır */
       opacity: 0.15; /* Şeffaflık ayarı */
       pointer-events: none;
     }
 
+    /* BÜYÜTÜLMÜŞ KALKAN */
     .kalkan {
-      width: 220px;
-      height: 270px;
-      border: 3.5px solid #ffb703; /* Sarı Kontür */
-      background-color: rgba(42, 157, 143, 0.2); /* Şeffaf Koyu Yeşil Dolgu */
-      border-radius: 10px 10px 130px 130px; /* Kalkan Şekli */
+      width: 320px;
+      height: 390px;
+      border: 4px solid #ffb703; /* Altın Sarı Çerçeve */
+      background-color: rgba(42, 157, 143, 0.2); /* Şeffaf Koyu Saha Yeşili */
+      border-radius: 12px 12px 180px 180px; /* Kalkan Şekli */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      box-shadow: 0 0 30px rgba(255, 183, 3, 0.25);
+    }
+
+    /* KALKAN İÇİNDEKİ S.E.H.A YAZISI */
+    .kalkan .logo-yazi {
+      color: #ffb703;
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: 5px;
+      text-shadow: 2px 2px 5px #000000;
+    }
+
+    /* HENTBOL TOPU İKONU */
+    .kalkan .hentbol-topu {
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      border: 3.5px solid #ffb703;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 25px rgba(255, 183, 3, 0.2);
+      box-shadow: inset 0 0 10px rgba(255, 183, 3, 0.3);
     }
 
-    .kalkan span {
-      color: #ffb703;
-      font-size: 2.3rem;
-      font-weight: 900;
-      letter-spacing: 4px;
-      text-shadow: 2px 2px 4px #000000;
+    /* Hentbol Topu Dikiş / Desen Çizgileri */
+    .kalkan .hentbol-topu::before,
+    .kalkan .hentbol-topu::after {
+      content: '';
+      position: absolute;
+      border: 2px solid #ffb703;
+      border-radius: 50%;
+    }
+
+    .kalkan .hentbol-topu::before {
+      width: 70px;
+      height: 70px;
+      border-color: #ffb703 transparent transparent transparent;
+      transform: rotate(-35deg);
+    }
+
+    .kalkan .hentbol-topu::after {
+      width: 70px;
+      height: 70px;
+      border-color: transparent transparent #ffb703 transparent;
+      transform: rotate(35deg);
     }
 
     /* BAŞLIK VE SLOGAN */
@@ -108,7 +148,7 @@
     .takim-karti {
       min-width: 190px;
       background-color: rgba(255, 255, 255, 0.05);
-      border: 1.5px solid #2a9d8f; /* Kartlar için Yeşil Çerçeve */
+      border: 1.5px solid #2a9d8f; /* Kartlarda Yeşil Çerçeve */
       border-radius: 12px;
       padding: 12px;
       text-align: center;
@@ -132,10 +172,11 @@
 </head>
 <body>
 
-  <!-- ARKA PLAN ŞEFFAF S.E.H.A KALKAN AMBLEMİ -->
+  <!-- ARKA PLAN ŞEFFAF HENTBOL TOPLU S.E.H.A KALKAN AMBLEMİ -->
   <div class="arka-plan-amblem">
     <div class="kalkan">
-      <span>S.E.H.A</span>
+      <span class="logo-yazi">S.E.H.A</span>
+      <div class="hentbol-topu"></div>
     </div>
   </div>
 
@@ -146,7 +187,7 @@
   <p class="slogan">"Sahada Birlik, Sınırların Ötesinde Güç!"</p>
 
   <!-- 3. INSTAGRAM BUTONU -->
-  <a class="btn" href="https://www.instagram.com/sinanebrar.hentbol.akademi" target="_blank">Instagram Hesabımız</a>
+  <a class="btn" href="https://www.instagram.com/se_hentbol_akademi/" target="_blank">Instagram Hesabımız</a>
 
   <!-- 4. HABERLER VE DUYURULAR -->
   <div class="duyuru-kutusu">
