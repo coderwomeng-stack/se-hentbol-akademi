@@ -2,25 +2,12 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>S.E Hentbol Akademi</title>
- <style>
-  .duyuru-kutusu {
-  background-color: #0d2818; /* Kartın iç zemin rengi */
-  border: 2px solid #ffb703;   /* Sarı Çerçeve */
-  border-radius: 12px;         /* Köşeleri yuvarlatma */
-  padding: 15px;               /* İç yazı boşluğu */
-  margin-bottom: 30px;         /* Altındaki elemanla aradaki mesafe */
-}
-    .slogan {
-  color: #ffb703;
-  font-size: 1.8rem;
-  font-weight: bold;
-  font-style: italic;
-  margin-bottom: 25px;
-}
+  <title>S.E. Hentbol Akademi</title>
+
+  <style>
     body {
       background-color: #1b4332; /* Koyu Saha Yeşili */
-      color: #ffffff;
+      color: #ffffff;            /* Düz Yazılar Beyaz */
       font-family: sans-serif;
       padding: 20px;
     }
@@ -29,67 +16,91 @@
       color: #ffb703; /* Canlı Kulüp Sarısı */
     }
 
+    /* Slogan Stili */
+    .slogan {
+      color: #ffb703;
+      font-size: 1.8rem;
+      font-weight: bold;
+      font-style: italic;
+      margin-top: -5px;
+      margin-bottom: 25px;
+    }
+
+    /* Instagram Butonu Stili */
     a.btn {
       background-color: #ffb703 !important;
       color: black !important;
-      padding: 8px 16px;
+      padding: 10px 20px;
       border-radius: 20px;
       text-decoration: none;
       font-weight: bold;
       display: inline-block;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
-    /* Yana Kaydırma Alanı */
+    /* Duyuru ve Hakkımızda Kutusu Stili */
+    .duyuru-kutusu {
+      background-color: #0d2818;
+      border: 2px solid #ffb703;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 30px;
+    }
+
+    /* Sağa Kaydırmalı Takım Alanı */
     .takim-kaydirma {
       display: flex;
-      gap: 15px; /* Kartlar arası boşluk */
-      overflow-x: auto; /* Sağa-sola kaydırma özelliği */
-      padding-bottom: 15px; /* Alt kaydırma çubuğu için boşluk */
+      gap: 15px;
+      overflow-x: auto;
+      padding-bottom: 15px;
+      margin-bottom: 30px;
     }
 
     /* Tekil Takım Kartı */
     .takim-karti {
-      min-width: 220px; /* Kartların genişliği */
-      background-color: #0d2818; /* Kart zemin rengi */
-      border: 2px solid #ffb703;   /* Sarı Çerçeve */
+      min-width: 200px;
+      background-color: #0d2818;
+      border: 2px solid #ffb703;
       border-radius: 12px;
       padding: 12px;
       text-align: center;
-      flex-shrink: 0; /* Kartların büzülmesini engeller */
+      flex-shrink: 0;
     }
 
     .takim-karti img {
       width: 100%;
-      height: 140px;
+      height: 130px;
       object-fit: cover;
       border-radius: 8px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .takim-karti h3 {
       color: #ffb703;
-      margin: 10px 0 5px 0;
+      margin: 8px 0 0 0;
       font-size: 1.1rem;
     }
   </style>
 </head>
 <body>
 
-  <a class="btn" href="https://www.instagram.com/sinanebrar.hentbol.akademi/" target="_blank">Instagram Hesabımız</a>
-  <h1>S.E.H.A</h1>
-  
- 
-  <p class="slogan">"Tutkuyla Başlar, Disiplinle Yükselir!"</p>
-  <!-- Haberler ve Duyurular Kutusu -->
+  <!-- 1. Kulüp İsmi -->
+  <h1>S.E. HENTBOL AKADEMİ</h1>
+
+  <!-- 2. Slogan -->
+  <p class="slogan">"Sahada Birlik, Sınırların Ötesinde Güç!"</p>
+
+  <!-- 3. Instagram Butonu -->
+  <a class="btn" href="https://www.instagram.com/se_hentbol_akademi/" target="_blank">Instagram Hesabımız</a>
+
+  <!-- 4. Haberler ve Duyurular -->
   <div class="duyuru-kutusu">
     <h2>Haberler & Duyurular</h2>
     <p>2026-2027 Sezonu altyapı seçmelerimiz ve antrenman programımız yakında burada yayınlanacaktır.</p>
   </div>
 
+  <!-- 5. Takımlarımız (Sağa Kayan Kartlar) -->
   <h2>Takımlarımız</h2>
-
-  <!-- Yana Kaydırmalı Kartlar Alanı -->
   <div class="takim-kaydirma">
     
     <div class="takim-karti">
@@ -117,6 +128,12 @@
       <h3>Minik Kızlar</h3>
     </div>
 
+  </div>
+
+  <!-- 6. Hakkımızda Bölümü -->
+  <div class="duyuru-kutusu">
+    <h2>Hakkımızda</h2>
+    <p>S.E. Hentbol Akademi; genç yetenekleri Türk hentboluna kazandırmak, spor kültürünü aşılamak ve disiplinli sporcular yetiştirmek amacıyla kurulmuştur. Parkede azim, sahada birlik anlayışıyla geleceğin şampiyonlarını hazırlıyoruz.</p>
   </div>
 
 </body>
