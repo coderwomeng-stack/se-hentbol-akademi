@@ -10,88 +10,104 @@
     body {
       background-color: #121212; /* Sleek Siyah Zemin */
       color: #ffffff;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 20px;
     }
 
-    /* ARKA PLAN ŞEFFAF KALKAN VE HENTBOL TOPLU AMBLEM */
+    /* ARKA PLAN ŞEFFAF LÜKS KALKAN AMBLEMİ */
     .arka-plan-amblem {
       position: fixed;
-      top: 60%; /* Sayfa merkezinde dengeli konumlandırma */
+      top: 58%; /* Sayfada tam dengeli konumlandırma */
       left: 50%;
       transform: translate(-50%, -50%);
-      z-index: -1; /* İçeriklerin arkasında filigran olarak kalır */
-      opacity: 0.15; /* Şeffaflık ayarı */
+      z-index: -1; /* İçeriklerin arkasında kalır */
+      opacity: 0.18; /* Tatlı ve net filigran şeffaflığı */
       pointer-events: none;
     }
 
-    /* BÜYÜTÜLMÜŞ KALKAN */
+    /* PRESTİJLİ ÇİFT ÇERÇEVELİ KALKAN */
     .kalkan {
-      width: 320px;
-      height: 390px;
-      border: 4px solid #ffb703; /* Altın Sarı Çerçeve */
-      background-color: rgba(42, 157, 143, 0.2); /* Şeffaf Koyu Saha Yeşili */
-      border-radius: 12px 12px 180px 180px; /* Kalkan Şekli */
+      width: 330px;
+      height: 420px;
+      /* Altın Sarısı Çift Çerçeve */
+      border: 4px double #d4af37; 
+      outline: 2px solid #f39c12;
+      outline-offset: -8px;
+      background: linear-gradient(180deg, rgba(42, 157, 143, 0.25) 0%, rgba(18, 18, 18, 0.4) 100%);
+      border-radius: 15px 15px 190px 190px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 15px;
-      box-shadow: 0 0 30px rgba(255, 183, 3, 0.25);
+      justify-content: space-evenly;
+      padding: 25px 15px;
+      box-shadow: 0 0 35px rgba(212, 175, 55, 0.25);
     }
 
-    /* KALKAN İÇİNDEKİ S.E.H.A YAZISI */
+    /* ÜST KISIMDAKİ BAŞARI YILDIZLARI */
+    .yildizlar {
+      color: #d4af37;
+      font-size: 1.2rem;
+      letter-spacing: 6px;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.8);
+      margin-top: 5px;
+    }
+
+    /* S.E.H.A HARFLERİ (ALTIN METALLİK GÖRÜNÜM) */
     .kalkan .logo-yazi {
-      color: #ffb703;
-      font-size: 3rem;
+      background: linear-gradient(180deg, #fff3a0 0%, #d4af37 50%, #aa7c11 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 3.3rem;
       font-weight: 900;
-      letter-spacing: 5px;
-      text-shadow: 2px 2px 5px #000000;
+      letter-spacing: 6px;
+      filter: drop-shadow(2px 3px 4px rgba(0, 0, 0, 0.9));
+      margin: 5px 0;
     }
 
-    /* HENTBOL TOPU İKONU */
+    /* ŞIK HENTBOL TOPU */
     .kalkan .hentbol-topu {
-      width: 85px;
-      height: 85px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
-      border: 3.5px solid #ffb703;
+      border: 3px solid #d4af37;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: inset 0 0 10px rgba(255, 183, 3, 0.3);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+      background: rgba(212, 175, 55, 0.05);
     }
 
-    /* Hentbol Topu Dikiş / Desen Çizgileri */
+    /* Top Desen Derinlik Çizgileri */
     .kalkan .hentbol-topu::before,
     .kalkan .hentbol-topu::after {
       content: '';
       position: absolute;
-      border: 2px solid #ffb703;
       border-radius: 50%;
     }
 
     .kalkan .hentbol-topu::before {
-      width: 70px;
-      height: 70px;
-      border-color: #ffb703 transparent transparent transparent;
-      transform: rotate(-35deg);
+      width: 80px;
+      height: 40px;
+      border-top: 2px solid #d4af37;
+      border-bottom: 2px solid #d4af37;
     }
 
     .kalkan .hentbol-topu::after {
-      width: 70px;
-      height: 70px;
-      border-color: transparent transparent #ffb703 transparent;
-      transform: rotate(35deg);
+      width: 40px;
+      height: 80px;
+      border-left: 2px solid #d4af37;
+      border-right: 2px solid #d4af37;
     }
 
     /* BAŞLIK VE SLOGAN */
     h1 {
-      color: #ffb703;
+      color: #d4af37;
       text-align: center;
       margin-top: 10px;
       margin-bottom: 5px;
+      letter-spacing: 1px;
     }
 
     .slogan {
@@ -105,31 +121,33 @@
 
     /* INSTAGRAM BUTONU */
     a.btn {
-      background-color: #ffb703;
+      background: linear-gradient(135deg, #f39c12 0%, #d4af37 100%);
       color: #121212;
-      padding: 12px 26px;
+      padding: 12px 28px;
       border-radius: 25px;
       text-decoration: none;
       font-weight: bold;
       display: block;
       width: fit-content;
       margin: 0 auto 35px auto;
-      transition: transform 0.2s ease;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     a.btn:hover {
       transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
     }
 
     /* DUYURU VE HAKKIMIZDA KUTULARI */
     h2 {
-      color: #ffb703;
+      color: #d4af37;
       margin-top: 0;
     }
 
     .duyuru-kutusu {
-      background-color: rgba(255, 255, 255, 0.05);
-      border: 1.5px solid #ffb703;
+      background-color: rgba(255, 255, 255, 0.04);
+      border: 1.5px solid #d4af37;
       border-radius: 12px;
       padding: 20px;
       margin-bottom: 30px;
@@ -147,8 +165,8 @@
 
     .takim-karti {
       min-width: 190px;
-      background-color: rgba(255, 255, 255, 0.05);
-      border: 1.5px solid #2a9d8f; /* Kartlarda Yeşil Çerçeve */
+      background-color: rgba(255, 255, 255, 0.04);
+      border: 1.5px solid #2a9d8f; /* Kartlarda Saha Yeşili Çerçeve */
       border-radius: 12px;
       padding: 12px;
       text-align: center;
@@ -164,7 +182,7 @@
     }
 
     .takim-karti h3 {
-      color: #ffb703;
+      color: #d4af37;
       margin: 8px 0 0 0;
       font-size: 1rem;
     }
@@ -172,9 +190,10 @@
 </head>
 <body>
 
-  <!-- ARKA PLAN ŞEFFAF HENTBOL TOPLU S.E.H.A KALKAN AMBLEMİ -->
+  <!-- ARKA PLAN ŞEFFAF PRESTİJLİ KALKAN VE HENTBOL AMBLEMİ -->
   <div class="arka-plan-amblem">
     <div class="kalkan">
+      <div class="yildizlar">★ ★ ★</div>
       <span class="logo-yazi">S.E.H.A</span>
       <div class="hentbol-topu"></div>
     </div>
@@ -196,7 +215,7 @@
   </div>
 
   <!-- 5. TAKIMLARIMIZ -->
-  <h2 style="color: #ffb703;">Takımlarımız</h2>
+  <h2 style="color: #d4af37;">Takımlarımız</h2>
   <div class="takim-kaydirma">
     
     <div class="takim-karti">
