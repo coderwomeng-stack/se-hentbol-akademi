@@ -37,11 +37,11 @@
       top: 0;
       z-index: 1000;
       border-bottom: 2px solid #c5a059;
-      padding: 15px 0;
+      padding: 12px 0;
     }
 
     .nav-container {
-      max-width: 1200px;
+      max-width: 1300px;
       margin: 0 auto;
       padding: 0 20px;
       display: flex;
@@ -57,8 +57,8 @@
     }
 
     .brand-logo {
-      width: 45px;
-      height: 45px;
+      width: 42px;
+      height: 42px;
       background: #c5a059;
       border-radius: 50%;
       display: flex;
@@ -71,19 +71,19 @@
     }
 
     .brand-logo .stars {
-      font-size: 8px;
+      font-size: 7px;
       color: #0b0c10;
     }
 
     .brand-logo .text {
       font-family: 'Oswald', sans-serif;
-      font-size: 14px;
+      font-size: 13px;
       line-height: 1;
     }
 
     .brand-title {
       font-family: 'Oswald', sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       letter-spacing: 1px;
       color: #ffffff;
     }
@@ -92,12 +92,12 @@
     .nav-links {
       display: flex;
       list-style: none;
-      gap: 25px;
+      gap: 20px;
     }
 
     .nav-links a {
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       transition: color 0.3s ease;
     }
 
@@ -105,13 +105,13 @@
       color: #c5a059;
     }
 
-    /* HAMBURGER BUTONU (Masaüstünde Gizli) */
+    /* HAMBURGER BUTONU */
     .hamburger {
       display: none;
       flex-direction: column;
       justify-content: space-between;
-      width: 30px;
-      height: 21px;
+      width: 28px;
+      height: 20px;
       background: transparent;
       border: none;
       cursor: pointer;
@@ -124,11 +124,10 @@
       height: 3px;
       background-color: #c5a059;
       border-radius: 2px;
-      transition: all 0.3s ease;
     }
 
-    /* MOBİL BİLGİSAYAR/TELEFON UYUMLULUĞU (768px Altı) */
-    @media (max-width: 768px) {
+    /* MOBİL BİLGİSAYAR/TELEFON UYUMLULUĞU */
+    @media (max-width: 900px) {
       .hamburger {
         display: flex;
       }
@@ -145,7 +144,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 30px;
+        gap: 25px;
         transition: right 0.4s ease;
       }
 
@@ -156,17 +155,17 @@
 
     /* GENEL SEKSİYON DÜZENİ */
     .section {
-      padding: 60px 20px;
+      padding: 50px 20px;
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1300px;
       margin: 0 auto;
     }
 
     .section-title {
       font-family: 'Oswald', sans-serif;
-      font-size: 2.2rem;
+      font-size: 2rem;
       text-align: center;
       color: #c5a059;
       margin-bottom: 5px;
@@ -177,42 +176,74 @@
       text-align: center;
       color: #34a862;
       font-weight: 600;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
+      font-size: 0.95rem;
     }
 
-    /* HERO SEKSİYONU */
+    /* HERO SEKSİYONU (KOYU SİYAH KOYU MAVİ TEMALI) */
     .hero {
-      background: linear-gradient(rgba(11, 12, 16, 0.8), rgba(11, 12, 16, 0.9)), url('https://picsum.photos/1200/600?sports') center/cover;
+      background: linear-gradient(180deg, #0b0c10 0%, #12141c 100%);
       text-align: center;
-      padding: 100px 20px;
+      padding: 70px 20px 50px 20px;
       border-bottom: 1px solid rgba(197, 160, 89, 0.2);
     }
 
     .hero h1 {
       font-family: 'Oswald', sans-serif;
-      font-size: 3rem;
-      margin-bottom: 15px;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
       color: #ffffff;
     }
 
     .hero p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: #34a862;
       font-weight: 700;
+      margin-bottom: 20px;
     }
 
-    /* TAKIMLAR SEKSİYONU VE KARTLAR */
+    /* INSTAGRAM BUTTON */
+    .insta-btn {
+      display: inline-block;
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .insta-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    /* TAKIMLAR SEKSİYONU VE KÜÇÜLTÜLMÜŞ KARTLAR (5'Lİ YAN YANA) */
     .teams-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
       align-items: start;
+    }
+
+    @media (max-width: 1100px) {
+      .teams-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .teams-grid {
+        grid-template-columns: repeat(1, 1fr);
+      }
     }
 
     .team-card {
       background: #12141c;
-      border: 2px solid #ffd166;
-      border-radius: 12px;
+      border: 1.5 solid #ffd166;
+      border: 1px solid #ffd166;
+      border-radius: 10px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -220,12 +251,12 @@
     }
 
     .team-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-4px);
     }
 
     .team-card img {
       width: 100%;
-      height: 180px;
+      height: 130px;
       object-fit: cover;
     }
 
@@ -233,8 +264,8 @@
       font-family: 'Oswald', sans-serif;
       color: #ffffff;
       text-align: center;
-      padding: 15px 10px 5px 10px;
-      font-size: 1.3rem;
+      padding: 10px 5px 2px 5px;
+      font-size: 1.05rem;
     }
 
     /* KADRO GÖSTER BUTONU */
@@ -242,10 +273,11 @@
       background: transparent;
       border: 1px solid #c5a059;
       color: #c5a059;
-      padding: 8px 15px;
-      margin: 10px 15px 15px 15px;
-      border-radius: 6px;
+      padding: 6px 10px;
+      margin: 8px 10px 12px 10px;
+      border-radius: 5px;
       font-weight: 600;
+      font-size: 0.8rem;
       cursor: pointer;
       transition: all 0.3s ease;
     }
@@ -255,14 +287,14 @@
       color: #0b0c10;
     }
 
-    /* GİZLİ OYUNCU KADROSU KUTUSU (GİZLİ) */
+    /* GİZLİ OYUNCU KADROSU KUTUSU */
     .roster-container {
-      display: none; /* Sayfa ilk açıldığında tamamen gizli! */
-      padding: 10px 15px 15px 15px;
-      background: rgba(0, 0, 0, 0.3);
-      border-top: 1px dashed rgba(197, 160, 89, 0.4);
+      display: none;
+      padding: 8px;
+      background: rgba(0, 0, 0, 0.4);
+      border-top: 1px dashed rgba(197, 160, 89, 0.3);
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
     }
 
     /* OYUNCU KARTI STİLİ */
@@ -270,43 +302,60 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 6px 10px;
+      padding: 5px 8px;
       background: #1c1f2b;
-      border: 1px solid rgba(255, 209, 102, 0.5);
-      border-radius: 6px;
+      border: 1px solid rgba(255, 209, 102, 0.4);
+      border-radius: 4px;
     }
 
     .player-number {
       font-family: 'Oswald', sans-serif;
-      font-size: 1rem;
+      font-size: 0.85rem;
       font-weight: 700;
       color: #c5a059;
-      width: 25px;
+      width: 20px;
     }
 
     .player-name {
       color: #ffffff;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       font-weight: 500;
       flex-grow: 1;
-      margin-left: 8px;
+      margin-left: 5px;
     }
 
     .player-pos {
       color: #34a862;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 600;
     }
 
-    /* INSTAGRAM BUTTON STİLİ */
-    .insta-btn {
-      display: inline-block;
-      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-weight: 600;
-      margin-top: 15px;
+    /* BİZ BÖLÜMÜ KARTLARI */
+    .biz-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .biz-card {
+      background: #12141c;
+      border: 1px solid #c5a059;
+      border-radius: 12px;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .biz-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .biz-card h3 {
+      font-family: 'Oswald', sans-serif;
+      color: #ffd166;
+      padding: 15px;
+      font-size: 1.3rem;
     }
 
     /* FOOTER */
@@ -315,7 +364,7 @@
       text-align: center;
       padding: 20px;
       border-top: 1px solid rgba(197, 160, 89, 0.2);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #888;
     }
   </style>
@@ -356,6 +405,7 @@
     <div class="container">
       <h1>GELECEĞİN ŞAMPİYONLARI BURADA YETİŞİYOR</h1>
       <p>S.E.H.A Hentbol Spor Kulübü Resmi Web Sitesi</p>
+      <a href="https://instagram.com" class="insta-btn" target="_blank">Instagram'da Takip Et 📸</a>
     </div>
   </section>
 
@@ -364,7 +414,7 @@
     <div class="container">
       <h2 class="section-title">HABERLER & DUYURULAR</h2>
       <p class="section-subtitle">Kulübümüzden En Son Gelişmeler</p>
-      <p style="text-align: center; color: #aaa;">Yakında yeni duyurular eklenecektir.</p>
+      <p style="text-align: center; color: #aaa; font-size: 0.9rem;">Yakında yeni duyurular eklenecektir.</p>
     </div>
   </section>
 
@@ -470,16 +520,26 @@
     <div class="container">
       <h2 class="section-title">MAÇ FİKSTÜRÜ</h2>
       <p class="section-subtitle">Gelecek Maçlarımız ve Sonuçlar</p>
-      <p style="text-align: center; color: #aaa;">Yaklaşan maç bilgileri yakında güncellenecektir.</p>
+      <p style="text-align: center; color: #aaa; font-size: 0.9rem;">Yaklaşan maç bilgileri yakında güncellenecektir.</p>
     </div>
   </section>
 
   <!-- BİZ SEKSİYONU -->
   <section id="biz" class="section" style="background: #0f1117;">
-    <div class="container" style="text-align: center;">
-      <h2 class="section-title">BİZ DOKUNUZ</h2>
-      <p class="section-subtitle">Sosyal Medyada S.E.H.A</p>
-      <a href="#" class="insta-btn" target="_blank">Instagram'da Takip Et 📸</a>
+    <div class="container">
+      <h2 class="section-title">BİZ</h2>
+      <p class="section-subtitle">Kulübümüzden Anlar ve Çalışmalar</p>
+      
+      <div class="biz-grid">
+        <div class="biz-card">
+          <img src="https://picsum.photos/600/400?random=10" alt="Antrenmanlarımız">
+          <h3>Antrenmanlarımız</h3>
+        </div>
+        <div class="biz-card">
+          <img src="https://picsum.photos/600/400?random=11" alt="Maçtan Kalanlar">
+          <h3>Maçtan Kalanlar</h3>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -487,10 +547,7 @@
   <section id="hakkimizda" class="section">
     <div class="container" style="text-align: center;">
       <h2 class="section-title">HAKKIMIZDA</h2>
-      <p class="section-subtitle">S.E.H.A Hentbol Spor Kulübü Hikayesi</p>
-      <p style="max-width: 800px; margin: 0 auto; color: #ccc;">
-        Kulübümüz genç sporcuları hentbol branşında yetiştirmek, disiplinli, ahlaklı ve başarılı bireyler olarak topluma kazandırmak amacıyla kurulmuştur.
-      </p>
+      <p class="section-subtitle">S.E.H.A Hentbol Spor Kulübü</p>
     </div>
   </section>
 
