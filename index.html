@@ -64,12 +64,11 @@
       margin: 0;
     }
 
-    /* ELİNDE TOP OLAN HENTBOLCU SİLÜETİ (MAT GOLD) */
-    .hentbolcu-svg {
-      width: 100px;
-      height: 100px;
-      fill: url(#matGoldGrad);
-      filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.4));
+    /* HACİMLİ MAT GOLD HENTBOL TOPU (SVG) */
+    .hentbol-topu-svg {
+      width: 120px;
+      height: 120px;
+      filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4));
     }
 
     /* BAŞLIK (CANLI SARI) */
@@ -81,22 +80,20 @@
       letter-spacing: 1px;
     }
 
-    /* SLOGAN (YEŞİLİN TATLI TONU) */
+    /* SLOGAN (KARADENİZ ORMAN YEŞİLİ - CANLI DOKULU) */
     .slogan {
-      color: #2a9d8f; /* Tatlı Yeşil */
+      color: #38b000; /* Gerçek Doğa / Yayla Yeşili */
       font-size: 1.4rem;
       font-weight: bold;
       font-style: italic;
       text-align: center;
       margin-bottom: 25px;
+      text-shadow: 0 0 10px rgba(56, 176, 0, 0.25);
     }
 
-    /* INSTAGRAM BUTONU (ORİJİNAL INSTAGRAM PEMBE/MOR DEGRADESİ) */
+    /* INSTAGRAM BUTONU (INSTAGRAM PEMBE/MOR DEGRADESİ) */
     a.btn {
-      background: #f09433;
-      background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-      background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-      background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
       color: #ffffff; /* Buton içi yazı beyaz */
       padding: 12px 28px;
       border-radius: 25px;
@@ -114,26 +111,27 @@
       box-shadow: 0 6px 20px rgba(220, 39, 67, 0.55);
     }
 
-    /* DUYURU VE HAKKIMIZDA KUTULARI (MAT GOLD ÇERÇEVELER) */
+    /* DUYURU VE HAKKIMIZDA KUTULARI (CIVIK CANLI SARI ÇERÇEVELER) */
     h2 {
-      color: #c5a059; /* Kutuların Başlıkları Mat Gold */
+      color: #ffd166; /* Kutuların Başlıkları Canlı Sarı */
       margin-top: 0;
     }
 
     .duyuru-kutusu {
       background-color: rgba(255, 255, 255, 0.03);
-      border: 1.5px solid #c5a059; /* Mat Gold Çerçeve */
+      border: 2px solid #ffd166; /* Cıvık Canlı Sarı Çerçeve */
       border-radius: 12px;
       padding: 20px;
       margin-bottom: 30px;
       backdrop-filter: blur(5px);
+      box-shadow: 0 0 12px rgba(255, 209, 102, 0.15);
     }
 
     .duyuru-kutusu p {
       color: #ffffff; /* İçerik Metinleri Beyaz */
     }
 
-    /* SAĞA KAYDIRMALI TAKIM KARTLARI */
+    /* SAĞA KAYDIRMALI TAKIM KARTLARI (CIVIK CANLI SARI ÇERÇEVELER) */
     .takim-kaydirma {
       display: flex;
       gap: 15px;
@@ -145,11 +143,12 @@
     .takim-karti {
       min-width: 190px;
       background-color: rgba(255, 255, 255, 0.03);
-      border: 1.5px solid #c5a059; /* Kartlar Mat Gold Çerçeve */
+      border: 2px solid #ffd166; /* Kartlar Cıvık Canlı Sarı Çerçeve */
       border-radius: 12px;
       padding: 12px;
       text-align: center;
       flex-shrink: 0;
+      box-shadow: 0 0 10px rgba(255, 209, 102, 0.1);
     }
 
     .takim-karti img {
@@ -178,8 +177,8 @@
       <!-- HARFLER -->
       <span class="logo-yazi">S.E.H.A</span>
 
-      <!-- ELİNDE TOP TUTAN HENTBOLCU SİLÜETİ -->
-      <svg class="hentbolcu-svg" viewBox="0 0 100 100">
+      <!-- HACİMLİ VE YUVARLAK HENTBOL TOPU SILUETI -->
+      <svg class="hentbol-topu-svg" viewBox="0 0 100 100">
         <defs>
           <linearGradient id="matGoldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stop-color="#e5c17c" />
@@ -187,19 +186,18 @@
             <stop offset="100%" stop-color="#937130" />
           </linearGradient>
         </defs>
-        
-        <!-- Oyuncu Bedeni -->
-        <path d="M 45 32 C 40 38, 38 46, 42 56 C 44 62, 40 72, 38 85 L 43 86 C 47 73, 50 65, 48 56 C 52 50, 56 42, 52 32 Z" />
-        <path d="M 40 58 Q 30 68 22 82 L 26 84 Q 34 71 42 61 Z" />
-        
-        <!-- Baş -->
-        <circle cx="48" cy="22" r="6" />
 
-        <!-- Kol -->
-        <path d="M 50 34 Q 62 28 72 24 L 70 20 Q 60 25 48 30 Z" />
+        <!-- Dış Hacimli Daire -->
+        <circle cx="50" cy="50" r="44" fill="none" stroke="url(#matGoldGrad)" stroke-width="4" />
 
-        <!-- Top -->
-        <circle cx="76" cy="21" r="6" />
+        <!-- Hentbol Topu Derinlik Kavis Çizgileri -->
+        <path d="M 50 6 A 44 44 0 0 1 50 94" fill="none" stroke="url(#matGoldGrad)" stroke-width="3.5" />
+        <path d="M 50 6 A 44 44 0 0 0 50 94" fill="none" stroke="url(#matGoldGrad)" stroke-width="3.5" />
+        <path d="M 6 50 A 44 44 0 0 1 94 50" fill="none" stroke="url(#matGoldGrad)" stroke-width="3.5" />
+        
+        <!-- İç Paneller / Dikiş Kavisleri -->
+        <path d="M 18 20 Q 50 40 82 20" fill="none" stroke="url(#matGoldGrad)" stroke-width="3" />
+        <path d="M 18 80 Q 50 60 82 80" fill="none" stroke="url(#matGoldGrad)" stroke-width="3" />
       </svg>
     </div>
   </div>
@@ -207,20 +205,20 @@
   <!-- 1. KULÜP ADI (SARI) -->
   <h1>S.E. HENTBOL AKADEMİ</h1>
 
-  <!-- 2. SLOGAN (YEŞİL) -->
+  <!-- 2. SLOGAN (KARADENİZ ORMAN YEŞİLİ) -->
   <p class="slogan">"Sahada Birlik, Sınırların Ötesinde Güç!"</p>
 
   <!-- 3. INSTAGRAM BUTONU (INSTAGRAM PEMBESİ) -->
   <a class="btn" href="https://www.instagram.com/se_hentbol_akademi/" target="_blank">Instagram Hesabımız</a>
 
-  <!-- 4. HABERLER VE DUYURULAR (MAT GOLD CHERÇEVE, BEYAZ YAZI) -->
+  <!-- 4. HABERLER VE DUYURULAR (CIVIK CANLI SARI CHERÇEVE, BEYAZ YAZI) -->
   <div class="duyuru-kutusu">
     <h2>Haberler & Duyurular</h2>
     <p>Altyapı seçmelerimiz ve antrenman programımız yakında burada yayınlanacaktır.</p>
   </div>
 
   <!-- 5. TAKIMLARIMIZ -->
-  <h2 style="color: #c5a059;">Takımlarımız</h2>
+  <h2 style="color: #ffd166;">Takımlarımız</h2>
   <div class="takim-kaydirma">
     
     <div class="takim-karti">
