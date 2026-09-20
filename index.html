@@ -2,57 +2,101 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>S.E. Hentbol Akademi</title>
 
   <style>
+    /* GENEL SAYFA YAPISI */
     body {
-      background-color: #121212; /* simsiyah */
-      background-image: url('logo.png'); /* Logonun yüklü olduğu resim adresi */
-  background-repeat: no-repeat;     /* Logonun tek bir tane durmasını sağlar, ekrana yaymaz */
-  background-position: center 80px;  /* Logoyu yukarıdan 80px aşağıya ve tam ortaya hizalar */
-  background-attachment: fixed;       /* Sayfayı aşağı kaysan bile logo arkada sabit kalır */
-  background-size: 300px;             /* Logonun ekrandaki genişliği */
-      color: #ffffff;            /* Düz Yazılar Beyaz */
-      font-family: sans-serif;
+      background-color: #121212; /* Sleek Siyah Zemin */
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      margin: 0;
       padding: 20px;
     }
 
-    h1, h2 {
-      color: #ffb703; /* Canlı Kulüp Sarısı */
+    /* ARKA PLAN ŞEFFAF KALKAN AMBLEMİ */
+    .arka-plan-amblem {
+      position: fixed;
+      top: 62%; /* Instagram butonunun altında kalacak şekilde konumlandırıldı */
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1; /* İçeriklerin arkasında kalmasını sağlar */
+      opacity: 0.15; /* Şeffaflık ayarı */
+      pointer-events: none;
     }
 
-    /* Slogan Stili */
-    .slogan {
+    .kalkan {
+      width: 220px;
+      height: 270px;
+      border: 3.5px solid #ffb703; /* Sarı Kontür */
+      background-color: rgba(42, 157, 143, 0.2); /* Şeffaf Koyu Yeşil Dolgu */
+      border-radius: 10px 10px 130px 130px; /* Kalkan Şekli */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 25px rgba(255, 183, 3, 0.2);
+    }
+
+    .kalkan span {
       color: #ffb703;
-      font-size: 1.8rem;
+      font-size: 2.3rem;
+      font-weight: 900;
+      letter-spacing: 4px;
+      text-shadow: 2px 2px 4px #000000;
+    }
+
+    /* BAŞLIK VE SLOGAN */
+    h1 {
+      color: #ffb703;
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .slogan {
+      color: #2a9d8f;
+      font-size: 1.4rem;
       font-weight: bold;
       font-style: italic;
-      margin-top: -5px;
+      text-align: center;
       margin-bottom: 25px;
     }
 
-    /* Instagram Butonu Stili */
+    /* INSTAGRAM BUTONU */
     a.btn {
-      background-color: #ffb703 !important;
-      color: black !important;
-      padding: 10px 20px;
-      border-radius: 20px;
+      background-color: #ffb703;
+      color: #121212;
+      padding: 12px 26px;
+      border-radius: 25px;
       text-decoration: none;
       font-weight: bold;
-      display: inline-block;
-      margin-bottom: 25px;
+      display: block;
+      width: fit-content;
+      margin: 0 auto 35px auto;
+      transition: transform 0.2s ease;
     }
 
-    /* Duyuru ve Hakkımızda Kutusu Stili */
+    a.btn:hover {
+      transform: scale(1.05);
+    }
+
+    /* DUYURU VE HAKKIMIZDA KUTULARI */
+    h2 {
+      color: #ffb703;
+      margin-top: 0;
+    }
+
     .duyuru-kutusu {
-      background-color: #0d2818;
-      border: 2px solid #ffb703;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1.5px solid #ffb703;
       border-radius: 12px;
-      padding: 15px;
+      padding: 20px;
       margin-bottom: 30px;
+      backdrop-filter: blur(5px);
     }
 
-    /* Sağa Kaydırmalı Takım Alanı */
+    /* SAĞA KAYDIRMALI TAKIM KARTLARI */
     .takim-kaydirma {
       display: flex;
       gap: 15px;
@@ -61,11 +105,10 @@
       margin-bottom: 30px;
     }
 
-    /* Tekil Takım Kartı */
     .takim-karti {
-      min-width: 200px;
-      background-color: #0d2818;
-      border: 2px solid #ffb703;
+      min-width: 190px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1.5px solid #2a9d8f; /* Kartlar için Yeşil Çerçeve */
       border-radius: 12px;
       padding: 12px;
       text-align: center;
@@ -74,7 +117,7 @@
 
     .takim-karti img {
       width: 100%;
-      height: 130px;
+      height: 120px;
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 8px;
@@ -83,61 +126,36 @@
     .takim-karti h3 {
       color: #ffb703;
       margin: 8px 0 0 0;
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
   </style>
 </head>
 <body>
-  
-<!-- 3. Instagram Butonu -->
-  <a class="btn" href="https://www.instagram.com/sinanebrar.hentbol.akademi/" target="_blank">Instagram Hesabımız</a>
-  
-  <!-- 1. Kulüp İsmi -->
-  <h1>S.E. HENTBOL AKADEMİ</h1>
 
-  <!-- 2. Slogan -->
-  <p class="slogan">"Sahada Birlik, Sınırların Ötesinde Güç!"</p>
- /* Arka Plan Amblem Kapsayıcısı */
-.arka-plan-amblem {
-  position: fixed;
-  top: 60%; /* 50%'den 60%'a çektik: Instagram butonunun altından başlasın diye biraz aşağı kaydırdık */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-  opacity: 0.12; /* Şeffaflığı bir tık daha kıstık ki arkada tatlı bir gölge gibi dursun */
-  pointer-events: none;
-}
-
-/* Kalkan Boyutu */
-.kalkan {
-  width: 220px;  /* 280px idi, azıcık küçülttük */
-  height: 270px; /* 340px idi, boyunu oranladık */
-  border: 3px solid #ffb703;
-  background-color: rgba(42, 157, 143, 0.15);
-  border-radius: 10px 10px 120px 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Kalkanın İçindeki Yazı */
-.kalkan span {
-  color: #ffb703;
-  font-size: 2.2rem; /* Boyutla orantılı olarak harfleri de ufelttik */
-  font-weight: 900;
-  letter-spacing: 3px;
-} 
-
-  
-
-  <!-- 4. Haberler ve Duyurular -->
-  <div class="duyuru-kutusu">
-    <h2>Haberler & Duyurular</h2>
-    <p>2026-2027 Sezonu altyapı seçmelerimiz ve antrenman programımız yakında burada yayınlanacaktır.</p>
+  <!-- ARKA PLAN ŞEFFAF S.E.H.A KALKAN AMBLEMİ -->
+  <div class="arka-plan-amblem">
+    <div class="kalkan">
+      <span>S.E.H.A</span>
+    </div>
   </div>
 
-  <!-- 5. Takımlarımız (Sağa Kayan Kartlar) -->
-  <h2>Takımlarımız</h2>
+  <!-- 1. KULÜP ADI -->
+  <h1>S.E. HENTBOL AKADEMİ</h1>
+
+  <!-- 2. SLOGAN -->
+  <p class="slogan">"Sahada Birlik, Sınırların Ötesinde Güç!"</p>
+
+  <!-- 3. INSTAGRAM BUTONU -->
+  <a class="btn" href="https://www.instagram.com/sinanebrar.hentbol.akademi" target="_blank">Instagram Hesabımız</a>
+
+  <!-- 4. HABERLER VE DUYURULAR -->
+  <div class="duyuru-kutusu">
+    <h2>Haberler & Duyurular</h2>
+    <p>Altyapı seçmelerimiz ve antrenman programımız yakında burada yayınlanacaktır.</p>
+  </div>
+
+  <!-- 5. TAKIMLARIMIZ -->
+  <h2 style="color: #ffb703;">Takımlarımız</h2>
   <div class="takim-kaydirma">
     
     <div class="takim-karti">
@@ -167,10 +185,10 @@
 
   </div>
 
-  <!-- 6. Hakkımızda Bölümü -->
+  <!-- 6. HAKKIMIZDA -->
   <div class="duyuru-kutusu">
     <h2>Hakkımızda</h2>
-    <p>S.E. Hentbol Akademi; genç yetenekleri Türk hentboluna kazandırmak, spor kültürünü aşılamak ve disiplinli sporcular yetiştirmek amacıyla kurulmuştur. Parkede azim, sahada birlik anlayışıyla geleceğin şampiyonlarını hazırlıyoruz.</p>
+    <p>S.E. Hentbol Akademi; genç yetenekleri Türk hentboluna kazandırmak, spor kültürünü aşılamak ve disiplinli sporcular yetiştirmek amacıyla kurulmuştur.</p>
   </div>
 
 </body>
