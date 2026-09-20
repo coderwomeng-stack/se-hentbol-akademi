@@ -88,6 +88,7 @@
   </style>
 </head>
 <body>
+  
 <!-- 3. Instagram Butonu -->
   <a class="btn" href="https://www.instagram.com/sinanebrar.hentbol.akademi/" target="_blank">Instagram Hesabımız</a>
   
@@ -96,6 +97,36 @@
 
   <!-- 2. Slogan -->
   <p class="slogan">"Sahada Birlik, Sınırların Ötesinde Güç!"</p>
+ /* Arka Plan Amblem Kapsayıcısı */
+.arka-plan-amblem {
+  position: fixed;
+  top: 60%; /* 50%'den 60%'a çektik: Instagram butonunun altından başlasın diye biraz aşağı kaydırdık */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0.12; /* Şeffaflığı bir tık daha kıstık ki arkada tatlı bir gölge gibi dursun */
+  pointer-events: none;
+}
+
+/* Kalkan Boyutu */
+.kalkan {
+  width: 220px;  /* 280px idi, azıcık küçülttük */
+  height: 270px; /* 340px idi, boyunu oranladık */
+  border: 3px solid #ffb703;
+  background-color: rgba(42, 157, 143, 0.15);
+  border-radius: 10px 10px 120px 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Kalkanın İçindeki Yazı */
+.kalkan span {
+  color: #ffb703;
+  font-size: 2.2rem; /* Boyutla orantılı olarak harfleri de ufelttik */
+  font-weight: 900;
+  letter-spacing: 3px;
+} 
 
   
 
