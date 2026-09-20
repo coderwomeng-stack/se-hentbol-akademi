@@ -367,6 +367,79 @@
       font-size: 0.85rem;
       color: #888;
     }
+    /* MAÇ FİKSTÜRÜ GRID YAPISI */
+    .matches-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    /* TEK BİR MAÇ KARTI */
+    .match-card {
+      background: #12141c;
+      border: 1px solid #c5a059;
+      border-radius: 10px;
+      padding: 18px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* LİG VE TARİH BİLGİSİ */
+    .match-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      border-bottom: 1px dashed rgba(197, 160, 89, 0.3);
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+
+    .match-league {
+      color: #ffd166;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .match-date {
+      color: #aaa;
+    }
+
+    /* MAÇ GÖVDESİ (TAKIMLAR VE SKOR) */
+    .match-body {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+    }
+
+    .team-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .match-vs {
+      background: #c5a059;
+      color: #0b0c10;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .match-score {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #34a862; /* Kazanan skor için yeşil ton */
+      background: #1c1f2b;
+      padding: 4px 12px;
+      border-radius: 6px;
+      border: 1px solid #34a862;
+    }
   </style>
 </head>
 <body>
