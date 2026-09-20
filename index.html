@@ -305,6 +305,52 @@
         right: 0; /* Ekrana getir */
       }
     }
+ /* OYUNCU KADROSU GENEL KUTUSU */
+    .roster-container {
+      padding: 15px 10px;
+      background: rgba(0, 0, 0, 0.4);
+      border-top: 1px solid rgba(197, 160, 89, 0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* TEK BİR OYUNCU KARTI */
+    .player-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: #1c1f2b;
+      border: 1px solid #ffd166; /* Canlı sarı çerçeve */
+      border-radius: 8px;
+      text-align: left;
+    }
+
+    /* FORMA NUMARASI */
+    .player-number {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #c5a059; /* Mat Gold */
+      min-width: 30px;
+    }
+
+    /* OYUNCU İSMİ */
+    .player-name {
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      flex-grow: 1;
+      margin-left: 10px;
+    }
+
+    /* OYUNCU MEVKİSİ */
+    .player-pos {
+      color: #34a862; /* Mayıs / Orman Yeşili */
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
   </style>
 </head>
 <body>
@@ -369,6 +415,14 @@
         <div class="team-card">
           <img src="https://picsum.photos/400/300?random=1" alt="Kadınlar 2. Lig">
           <h3>Kadınlar 2. Lig</h3>
+         <div class="roster-container">
+<!--burdan ekleyeceksin her bir oyuncuyu-->
+    <!-- 1. OYUNCU -->
+    <div class="player-card">
+      <span class="player-number">01</span>
+      <span class="player-name">Ayşe Yılmaz</span>
+      <span class="player-pos">Kaleci</span>
+    </div> 
         </div>
         <div class="team-card">
           <img src="https://picsum.photos/400/300?random=2" alt="Genç Kızlar">
@@ -377,6 +431,12 @@
         <div class="team-card">
           <img src="https://picsum.photos/400/300?random=3" alt="Yıldız Kızlar">
           <h3>Yıldız Kızlar</h3>
+    <!--burdan ekleyeceksin her bir oyuncuyu-->
+    <!-- 1. OYUNCU -->
+    <div class="player-card">
+      <span class="player-number">01</span>
+      <span class="player-name">Ayşe Yılmaz</span>
+      <span class="player-pos">Kaleci</span>
         </div>
         <div class="team-card">
           <img src="https://picsum.photos/400/300?random=4" alt="Küçük Kızlar">
