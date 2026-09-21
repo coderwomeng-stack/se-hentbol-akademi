@@ -109,10 +109,15 @@
     .admin-nav-btn {
       background: #c5a059;
       color: #0b0c10 !important;
-      padding: 5px 12px;
+      padding: 6px 14px;
       border-radius: 4px;
       font-weight: bold !important;
       cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .admin-nav-btn:hover {
+      background: #ffd166;
     }
 
     /* HAMBURGER BUTONU */
@@ -136,7 +141,7 @@
       border-radius: 2px;
     }
 
-    /* MOBİL BİLGİSAYAR/TELEFON UYUMLULUĞU */
+    /* MOBİL UYUMLULUK */
     @media (max-width: 900px) {
       .hamburger {
         display: flex;
@@ -238,15 +243,11 @@
     }
 
     @media (max-width: 1100px) {
-      .teams-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
+      .teams-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
     @media (max-width: 700px) {
-      .teams-grid {
-        grid-template-columns: repeat(1, 1fr);
-      }
+      .teams-grid { grid-template-columns: repeat(1, 1fr); }
     }
 
     .team-card {
@@ -493,6 +494,184 @@
     .delete-btn:hover {
       background: #d62828;
     }
+
+    /* ========================================================= */
+    /* YENİ MODERN ADMIN PANELİ STİLLERİ (DASHBOARD TEMASI) */
+    /* ========================================================= */
+    #admin-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(5, 6, 8, 0.88);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+    }
+
+    /* Modern Giriş Kutusu */
+    .modern-admin-card {
+      background: #12151e;
+      border: 1px solid rgba(197, 160, 89, 0.3);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 420px;
+      padding: 30px;
+      text-align: center;
+      position: relative;
+      animation: modalFadeIn 0.3s ease;
+    }
+
+    /* Modern Dashboard Kutusu */
+    .modern-dashboard-card {
+      background: #12151e;
+      border: 1px solid rgba(197, 160, 89, 0.3);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 650px;
+      padding: 25px;
+      position: relative;
+      animation: modalFadeIn 0.3s ease;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(-15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    .admin-header h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem;
+      color: #ffd166;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .close-btn-modern {
+      background: rgba(255,255,255,0.05);
+      border: none;
+      color: #aaa;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+
+    .close-btn-modern:hover {
+      background: #e63946;
+      color: #fff;
+    }
+
+    /* Sekmeli Yapı (Tabs) */
+    .admin-tabs {
+      display: flex;
+      gap: 8px;
+      background: rgba(0,0,0,0.3);
+      padding: 5px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 8px 12px;
+      background: transparent;
+      border: none;
+      color: #888;
+      font-weight: 600;
+      font-size: 0.8rem;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      background: #c5a059;
+      color: #0b0c10;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Inputs & Form Elemanları */
+    .input-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 0.75rem;
+      color: #aaa;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .modern-input {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: #0b0c10;
+      color: #fff;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border 0.2s;
+    }
+
+    .modern-input:focus {
+      border-color: #c5a059;
+    }
+
+    .btn-primary-modern {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #c5a059 0%, #ffd166 100%);
+      color: #0b0c10;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary-modern:hover {
+      opacity: 0.9;
+    }
+
+    .logout-link {
+      color: #e63946;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
   </style>
 </head>
 <body>
@@ -522,7 +701,7 @@
         <li><a href="#maclar">Maçlar</a></li>
         <li><a href="#biz">Biz</a></li>
         <li><a href="#hakkimizda">Hakkımızda</a></li>
-        <li><a href="#" id="open-admin-btn" class="admin-nav-btn">Yönetici Girişi</a></li>
+        <li><a href="#" id="open-admin-btn" class="admin-nav-btn">⚡ Yönetici Paneli</a></li>
       </ul>
     </div>
   </header>
@@ -555,7 +734,6 @@
       <p class="section-subtitle">SinemEbrar Hentbol Akademi Yaş Kategorileri</p>
       
       <div class="teams-grid">
-
         <!-- 1. TAKIM -->
         <div class="team-card">
           <img src="https://picsum.photos/400/300?random=1" alt="Kadınlar 2. Lig">
@@ -640,7 +818,6 @@
             <div class="player-card"><span class="player-number">07</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Pivote</span></div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -686,7 +863,6 @@
       <p class="section-subtitle">Kulübümüzden Anlar ve Çalışmalar</p>
       
       <div class="biz-grid" id="biz-container">
-        <!-- Varsayılan Fotoğraflar -->
         <div class="biz-card">
           <img src="https://picsum.photos/600/400?random=10" alt="Antrenmanlarımız">
           <h3>Antrenmanlarımız</h3>
@@ -706,7 +882,7 @@
       <p class="section-subtitle">"Geleceğe Atılan Doğru Bir Adım"</p>
       <p style="color: #ccc; font-size: 0.95rem; line-height: 1.8; max-width: 800px; margin: 0 auto;">
         SinemEbrar Hentbol Akademi, kulüp kültürünü ve spor disiplinini bir devlet lisesi çatısı altında harmanlayan kurucumuz <strong style="color: #ffd166;">Sinem Ebrar</strong>'ın kararlı liderliğiyle kurulmuştur.
-        Amacımız; genç kızlarımıza üst düzey spor eğitimi sunmak, onları hentbolun dinamizmiyle şekillendirip hem sahada hem yaşamda özgüvenli bireyler kılmaktır. Biz parkeye sadece kazanmak için değil, iz bırakmak için çıkıyoruz.
+        Amacımız; genç kızlarımıza üst düzey spor eğitimi sunmak, onları hentbolun dinamizmiyle şekillendirip hem sahada hem yaşamda özgüvenli bireyler kılmaktır.
       </p>
     </div>
   </section>
@@ -716,40 +892,67 @@
     <p>&copy; 2026 SinemEbrar Hentbol Akademi. Tüm Hakları Saklıdır.</p>
   </footer>
 
-  <!-- ADMIN GİRİŞ VE YÖNETİM PANELİ MODAL -->
-  <div id="admin-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; align-items: center; justify-content: center; overflow-y: auto;">
+  <!-- MODERN YÖNETİCİ PANELSİ MODAL -->
+  <div id="admin-modal">
     
     <!-- 1. GİRİŞ KUTUSU -->
-    <div id="login-box" style="background: #12141c; border: 2px solid #ffd166; padding: 25px; border-radius: 10px; width: 90%; max-width: 400px; text-align: center; position: relative;">
-      <span class="close-admin" style="position: absolute; right: 15px; top: 10px; color: #fff; font-size: 20px; cursor: pointer;">&times;</span>
-      <h3 style="color: #ffd166; font-family: 'Oswald', sans-serif; margin-bottom: 15px;">ADMIN GİRİŞİ</h3>
-      <input type="password" id="admin-pass" placeholder="Şifrenizi Girin (Şifre: admin)" style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #c5a059; background: #0b0c10; color: #fff;">
-      <button id="login-btn" style="width: 100%; padding: 10px; background: #ffd166; border: none; font-weight: bold; cursor: pointer; border-radius: 5px;">Giriş Yap</button>
-      <p id="login-error" style="color: red; font-size: 0.8rem; margin-top: 10px; display: none;">Hatalı şifre!</p>
+    <div id="login-box" class="modern-admin-card">
+      <div class="admin-header">
+        <h3>🔒 Yönetici Girişi</h3>
+        <button class="close-btn-modern close-admin">&times;</button>
+      </div>
+
+      <div class="input-group">
+        <label for="admin-pass">Erişim Şifresi</label>
+        <input type="password" id="admin-pass" class="modern-input" placeholder="Şifreyi girin (admin)">
+      </div>
+
+      <button id="login-btn" class="btn-primary-modern">Sisteme Giriş Yap</button>
+      <p id="login-error" style="color: #e63946; font-size: 0.8rem; margin-top: 12px; display: none;">⚠️ Hatalı şifre girdiniz!</p>
     </div>
 
-    <!-- 2. İÇERİK EKLEME PANELİ -->
-    <div id="panel-box" style="display: none; background: #12141c; border: 2px solid #34a862; padding: 25px; border-radius: 10px; width: 90%; max-width: 500px; text-align: center; position: relative;">
-      <span class="close-admin" style="position: absolute; right: 15px; top: 10px; color: #fff; font-size: 20px; cursor: pointer;">&times;</span>
-      <h3 style="color: #34a862; font-family: 'Oswald', sans-serif; margin-bottom: 15px;">YÖNETİCİ PANELİ</h3>
-      
-      <!-- FORM 1: DUYURU EKLE -->
-      <div style="border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 15px;">
-        <h4 style="color: #ffd166; font-size: 0.9rem; text-align: left; margin-bottom: 8px;">📢 Haber / Duyuru Ekle</h4>
-        <input type="text" id="news-title" placeholder="Duyuru Başlığı" style="width: 100%; padding: 8px; margin-bottom: 8px; border-radius: 4px; border: 1px solid #c5a059; background: #0b0c10; color: #fff;">
-        <textarea id="news-content" placeholder="Duyuru Detayı" style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 4px; border: 1px solid #c5a059; background: #0b0c10; color: #fff; height: 50px;"></textarea>
-        <button id="add-news-btn" style="width: 100%; padding: 8px; background: #34a862; border: none; color: #fff; font-weight: bold; cursor: pointer; border-radius: 5px;">Duyuru Yayınla</button>
+    <!-- 2. MODERN YÖNETİM DASHBOARD'U -->
+    <div id="panel-box" class="modern-dashboard-card" style="display: none;">
+      <div class="admin-header">
+        <h3>⚡ Kontrol Paneli</h3>
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <button id="logout-btn" class="logout-link">🚪 Çıkış</button>
+          <button class="close-btn-modern close-admin">&times;</button>
+        </div>
       </div>
 
-      <!-- FORM 2: BİZ KISMINA FOTOĞRAF EKLE -->
-      <div style="margin-bottom: 15px;">
-        <h4 style="color: #ffd166; font-size: 0.9rem; text-align: left; margin-bottom: 8px;">🖼️ Biz Kısmına Fotoğraf Ekle</h4>
-        <input type="text" id="photo-title" placeholder="Fotoğraf Başlığı (Örn: Turnuva Anı)" style="width: 100%; padding: 8px; margin-bottom: 8px; border-radius: 4px; border: 1px solid #c5a059; background: #0b0c10; color: #fff;">
-        <input type="text" id="photo-url" placeholder="Fotoğraf Linki (URL)" style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 4px; border: 1px solid #c5a059; background: #0b0c10; color: #fff;">
-        <button id="add-photo-btn" style="width: 100%; padding: 8px; background: #c5a059; border: none; color: #0b0c10; font-weight: bold; cursor: pointer; border-radius: 5px;">Fotoğrafı Galeriye Ekle</button>
+      <!-- DASHBOARD SEKMELERİ -->
+      <div class="admin-tabs">
+        <button class="tab-btn active" data-tab="tab-news">📢 Duyurular</button>
+        <button class="tab-btn" data-tab="tab-gallery">🖼️ Galeri / Biz</button>
       </div>
-      
-      <button id="logout-btn" style="background: transparent; border: 1px solid red; color: red; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">Çıkış Yap</button>
+
+      <!-- SEKME 1: DUYURULAR -->
+      <div id="tab-news" class="tab-content active">
+        <div class="input-group">
+          <label>Duyuru Başlığı</label>
+          <input type="text" id="news-title" class="modern-input" placeholder="Örn: Yeni Sezon Seçmeleri Başlıyor">
+        </div>
+        <div class="input-group">
+          <label>Duyuru İçeriği</label>
+          <textarea id="news-content" class="modern-input" style="height: 80px; resize: none;" placeholder="Duyurunun detaylarını buraya yazın..."></textarea>
+        </div>
+        <button id="add-news-btn" class="btn-primary-modern">Duyuruyu Yayınla</button>
+      </div>
+
+      <!-- SEKME 2: FOTOĞRAF GALERİSİ -->
+      <div id="tab-gallery" class="tab-content">
+        <div class="input-group">
+          <label>Fotoğraf Başlığı</label>
+          <input type="text" id="photo-title" class="modern-input" placeholder="Örn: Şampiyonluk Kupası">
+        </div>
+        <div class="input-group">
+          <label>Görsel Bağlantısı (URL)</label>
+          <input type="text" id="photo-url" class="modern-input" placeholder="https://...">
+        </div>
+        <button id="add-photo-btn" class="btn-primary-modern">Fotoğrafı Ekle</button>
+      </div>
+
     </div>
 
   </div>
@@ -803,7 +1006,7 @@
         });
       });
 
-      /* 3. ADMIN PANELİ İŞLEMLERİ */
+      /* 3. MODAL VE SEKME KONTROLLERİ */
       const adminModal = document.getElementById('admin-modal');
       const openAdminBtn = document.getElementById('open-admin-btn');
       const closeAdminBtns = document.querySelectorAll('.close-admin');
@@ -836,9 +1039,23 @@
         });
       });
 
-      // Giriş Şifresi Kontrolü (Şifre: admin)
+      // Sekmeler Arası Geçiş
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabContents.forEach(c => c.classList.remove('active'));
+
+          btn.classList.add('active');
+          document.getElementById(btn.dataset.tab).classList.add('active');
+        });
+      });
+
+      /* 4. ŞİFRE KONTROLÜ VE OTOMATİK SİLME */
       loginBtn.addEventListener('click', () => {
-        if (adminPassInput.value === 'admin') {
+        if (adminPassInput.value === 'sinanebrar1551') {
           isAdminLoggedIn = true;
           loginBox.style.display = 'none';
           panelBox.style.display = 'block';
@@ -848,19 +1065,17 @@
           loadPhotos();
         } else {
           loginError.style.display = 'block';
-          adminPassInput.value = ''; // Hatalı girildiğinde şifreyi otomatik siler
-          adminPassInput.focus();   // Tekrar yazabilmesi için imleci kutunun içine koyar
+          adminPassInput.value = ''; // Hatalı girilince şifreyi otomatik temizler
+          adminPassInput.focus();   // Kullanıcı için kutuyu aktif yapar
         }
       });
 
-      // Enter tuşuna basarak giriş yapma kolaylığı
       adminPassInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
           loginBtn.click();
         }
       });
 
-      // Çıkış Yap
       logoutBtn.addEventListener('click', () => {
         isAdminLoggedIn = false;
         panelBox.style.display = 'none';
@@ -870,7 +1085,7 @@
         loadPhotos();
       });
 
-      /* 4. DUYURU YÖNETİMİ (YÜKLE, EKLE, SİL) */
+      /* 5. DİNAMİK İÇERİK YÖNETİMİ */
       window.loadNews = () => {
         const savedNews = JSON.parse(localStorage.getItem('seha_news')) || [];
         newsContainer.innerHTML = '';
@@ -926,7 +1141,6 @@
         }
       };
 
-      /* 5. BİZ FOTOĞRAFLARI YÖNETİMİ */
       window.loadPhotos = () => {
         const savedPhotos = JSON.parse(localStorage.getItem('seha_photos')) || [];
         
@@ -982,7 +1196,6 @@
         }
       };
 
-      // Sayfa yüklenince verileri ekrana bas
       loadNews();
       loadPhotos();
 
