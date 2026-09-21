@@ -306,7 +306,6 @@
       gap: 6px;
     }
 
-    /* OYUNCU KARTI STİLİ */
     .player-card {
       display: flex;
       align-items: center;
@@ -352,6 +351,7 @@
       border-radius: 12px;
       overflow: hidden;
       text-align: center;
+      position: relative;
     }
 
     .biz-card img {
@@ -455,6 +455,7 @@
       border-radius: 8px;
       padding: 15px;
       margin-bottom: 15px;
+      position: relative;
     }
 
     .news-card h3 {
@@ -473,6 +474,24 @@
       font-size: 0.75rem;
       margin-top: 8px;
       display: block;
+    }
+
+    .delete-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #e63946;
+      color: #fff;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
+    .delete-btn:hover {
+      background: #d62828;
     }
   </style>
 </head>
@@ -503,7 +522,7 @@
         <li><a href="#maclar">Maçlar</a></li>
         <li><a href="#biz">Biz</a></li>
         <li><a href="#hakkimizda">Hakkımızda</a></li>
-        <li><a href="#" id="open-admin-btn" class="admin-admin-btn">Yönetici</a></li>
+        <li><a href="#" id="open-admin-btn" class="admin-nav-btn">Yönetici Girişi</a></li>
       </ul>
     </div>
   </header>
@@ -525,7 +544,6 @@
       
       <div id="news-container">
         <!-- Eklenen duyurular buraya akacak -->
-        <p style="text-align: center; color: #aaa; font-size: 0.9rem;">Yakında yeni duyurular eklenecektir.</p>
       </div>
     </div>
   </section>
@@ -538,7 +556,7 @@
       
       <div class="teams-grid">
 
-        <!-- 1. TAKIM: KADINLAR 2. LİG -->
+        <!-- 1. TAKIM -->
         <div class="team-card">
           <img src="https://picsum.photos/400/300?random=1" alt="Kadınlar 2. Lig">
           <h3>Kadınlar 2. Lig</h3>
@@ -555,7 +573,7 @@
           </div>
         </div>
 
-        <!-- 2. TAKIM: GENÇ KIZLAR -->
+        <!-- 2. TAKIM -->
         <div class="team-card">
           <img src="https://picsum.photos/400/300?random=2" alt="Genç Kızlar">
           <h3>Genç Kızlar</h3>
@@ -572,7 +590,7 @@
           </div>
         </div>
 
-        <!-- 3. TAKIM: YILDIZ KIZLAR -->
+        <!-- 3. TAKIM -->
         <div class="team-card">
           <img src="https://picsum.photos/400/300?random=3" alt="Yıldız Kızlar">
           <h3>Yıldız Kızlar</h3>
@@ -589,7 +607,7 @@
           </div>
         </div>
 
-        <!-- 4. TAKIM: KÜÇÜK KIZLAR -->
+        <!-- 4. TAKIM -->
         <div class="team-card">
           <img src="https://picsum.photos/400/300?random=4" alt="Küçük Kızlar">
           <h3>Küçük Kızlar</h3>
@@ -606,7 +624,7 @@
           </div>
         </div>
 
-        <!-- 5. TAKIM: MİNİK KIZLAR -->
+        <!-- 5. TAKIM -->
         <div class="team-card">
           <img src="https://picsum.photos/400/300?random=5" alt="Minik Kızlar">
           <h3>Minik Kızlar</h3>
@@ -634,41 +652,29 @@
       <p class="section-subtitle">Gelecek Maçlarımız ve Sonuçlar</p>
 
       <div class="matches-grid">
-
-        <!-- 1. MAÇ (GELECEK MAÇ) -->
         <div class="match-card">
           <div class="match-details">
             <span class="match-league">Kadınlar 2. Lig</span>
             <span class="match-date">📅 15 Kasım 2026 - 14:00</span>
           </div>
           <div class="match-body">
-            <div class="team home">
-              <span class="team-name">SinemEbrar SK</span>
-            </div>
+            <div class="team home"><span class="team-name">SinemEbrar SK</span></div>
             <div class="match-vs">VS</div>
-            <div class="team away">
-              <span class="team-name">Anadolu GSK</span>
-            </div>
+            <div class="team away"><span class="team-name">Anadolu GSK</span></div>
           </div>
         </div>
 
-        <!-- 2. MAÇ (SONUÇLANMIŞ MAÇ) -->
         <div class="match-card">
           <div class="match-details">
             <span class="match-league">Genç Kızlar Ligi</span>
             <span class="match-date">📅 28 Ekim 2026 - 16:30</span>
           </div>
           <div class="match-body">
-            <div class="team home">
-              <span class="team-name">Gelişim SK</span>
-            </div>
+            <div class="team home"><span class="team-name">Gelişim SK</span></div>
             <div class="match-score">24 - 28</div>
-            <div class="team away">
-              <span class="team-name">SinemEbrar SK</span>
-            </div>
+            <div class="team away"><span class="team-name">SinemEbrar SK</span></div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -679,7 +685,8 @@
       <h2 class="section-title">BİZ</h2>
       <p class="section-subtitle">Kulübümüzden Anlar ve Çalışmalar</p>
       
-      <div class="biz-grid">
+      <div class="biz-grid" id="biz-container">
+        <!-- Varsayılan Fotoğraflar -->
         <div class="biz-card">
           <img src="https://picsum.photos/600/400?random=10" alt="Antrenmanlarımız">
           <h3>Antrenmanlarımız</h3>
@@ -710,7 +717,7 @@
   </footer>
 
   <!-- ADMIN GİRİŞ VE YÖNETİM PANELİ MODAL -->
-  <div id="admin-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; align-items: center; justify-content: center;">
+  <div id="admin-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; align-items: center; justify-content: center; overflow-y: auto;">
     
     <!-- 1. GİRİŞ KUTUSU -->
     <div id="login-box" style="background: #12141c; border: 2px solid #ffd166; padding: 25px; border-radius: 10px; width: 90%; max-width: 400px; text-align: center; position: relative;">
@@ -726,11 +733,21 @@
       <span class="close-admin" style="position: absolute; right: 15px; top: 10px; color: #fff; font-size: 20px; cursor: pointer;">&times;</span>
       <h3 style="color: #34a862; font-family: 'Oswald', sans-serif; margin-bottom: 15px;">YÖNETİCİ PANELİ</h3>
       
-      <h4 style="color: #ffd166; font-size: 0.9rem; text-align: left; margin-bottom: 5px;">Haber / Duyuru Ekle</h4>
-      <input type="text" id="news-title" placeholder="Duyuru Başlığı" style="width: 100%; padding: 8px; margin-bottom: 8px; border-radius: 4px; border: 1px solid #c5a059; background: #0b0c10; color: #fff;">
-      <textarea id="news-content" placeholder="Duyuru Detayı" style="width: 100%; padding: 8px; margin-bottom: 15px; border-radius: 4px; border: 1px solid #c5a059; background: #0b0c10; color: #fff; height: 60px;"></textarea>
-      
-      <button id="add-news-btn" style="width: 100%; padding: 10px; background: #34a862; border: none; color: #fff; font-weight: bold; cursor: pointer; border-radius: 5px; margin-bottom: 20px;">Duyuru Yayınla</button>
+      <!-- FORM 1: DUYURU EKLE -->
+      <div style="border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 15px;">
+        <h4 style="color: #ffd166; font-size: 0.9rem; text-align: left; margin-bottom: 8px;">📢 Haber / Duyuru Ekle</h4>
+        <input type="text" id="news-title" placeholder="Duyuru Başlığı" style="width: 100%; padding: 8px; margin-bottom: 8px; border-radius: 4px; border: 1px solid #c5a059; background: #0b0c10; color: #fff;">
+        <textarea id="news-content" placeholder="Duyuru Detayı" style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 4px; border: 1px solid #c5a059; background: #0b0c10; color: #fff; height: 50px;"></textarea>
+        <button id="add-news-btn" style="width: 100%; padding: 8px; background: #34a862; border: none; color: #fff; font-weight: bold; cursor: pointer; border-radius: 5px;">Duyuru Yayınla</button>
+      </div>
+
+      <!-- FORM 2: BİZ KISMINA FOTOĞRAF EKLE -->
+      <div style="margin-bottom: 15px;">
+        <h4 style="color: #ffd166; font-size: 0.9rem; text-align: left; margin-bottom: 8px;">🖼️ Biz Kısmına Fotoğraf Ekle</h4>
+        <input type="text" id="photo-title" placeholder="Fotoğraf Başlığı (Örn: Turnuva Anı)" style="width: 100%; padding: 8px; margin-bottom: 8px; border-radius: 4px; border: 1px solid #c5a059; background: #0b0c10; color: #fff;">
+        <input type="text" id="photo-url" placeholder="Fotoğraf Linki (URL)" style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 4px; border: 1px solid #c5a059; background: #0b0c10; color: #fff;">
+        <button id="add-photo-btn" style="width: 100%; padding: 8px; background: #c5a059; border: none; color: #0b0c10; font-weight: bold; cursor: pointer; border-radius: 5px;">Fotoğrafı Galeriye Ekle</button>
+      </div>
       
       <button id="logout-btn" style="background: transparent; border: 1px solid red; color: red; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">Çıkış Yap</button>
     </div>
@@ -739,6 +756,8 @@
 
   <!-- JAVASCRIPT KODLARI -->
   <script>
+    let isAdminLoggedIn = false;
+
     document.addEventListener('DOMContentLoaded', () => {
 
       /* 1. MOBİL BURGER MENÜ */
@@ -800,6 +819,11 @@
       const addNewsBtn = document.getElementById('add-news-btn');
       const newsContainer = document.getElementById('news-container');
 
+      const photoTitleInput = document.getElementById('photo-title');
+      const photoUrlInput = document.getElementById('photo-url');
+      const addPhotoBtn = document.getElementById('add-photo-btn');
+      const bizContainer = document.getElementById('biz-container');
+
       // Modalı Aç/Kapat
       openAdminBtn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -812,71 +836,155 @@
         });
       });
 
-      // Giriş Şifresi Kontrolü (Varsayılan Şifre: admin)
+      // Giriş Şifresi Kontrolü (Şifre: admin)
       loginBtn.addEventListener('click', () => {
-        if (adminPassInput.value === 'sinanebrar1551') {
+        if (adminPassInput.value === 'admin') {
+          isAdminLoggedIn = true;
           loginBox.style.display = 'none';
           panelBox.style.display = 'block';
           loginError.style.display = 'none';
           adminPassInput.value = '';
+          loadNews();
+          loadPhotos();
         } else {
           loginError.style.display = 'block';
+          adminPassInput.value = ''; // Hatalı girildiğinde şifreyi otomatik siler
+          adminPassInput.focus();   // Tekrar yazabilmesi için imleci kutunun içine koyar
+        }
+      });
+
+      // Enter tuşuna basarak giriş yapma kolaylığı
+      adminPassInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          loginBtn.click();
         }
       });
 
       // Çıkış Yap
       logoutBtn.addEventListener('click', () => {
+        isAdminLoggedIn = false;
         panelBox.style.display = 'none';
         loginBox.style.display = 'block';
         adminModal.style.display = 'none';
+        loadNews();
+        loadPhotos();
       });
 
-      // LocalStorage'dan Duyuruları Yükle (Kalıcılık Sağlar)
-      const loadNews = () => {
+      /* 4. DUYURU YÖNETİMİ (YÜKLE, EKLE, SİL) */
+      window.loadNews = () => {
         const savedNews = JSON.parse(localStorage.getItem('seha_news')) || [];
-        if (savedNews.length > 0) {
-          newsContainer.innerHTML = '';
-          savedNews.forEach(news => {
-            const newsHtml = `
-              <div class="news-card">
-                <h3>${news.title}</h3>
-                <p>${news.content}</p>
-                <span class="news-date">📅 ${news.date}</span>
-              </div>
-            `;
-            newsContainer.innerHTML += newsHtml;
-          });
+        newsContainer.innerHTML = '';
+
+        if (savedNews.length === 0) {
+          newsContainer.innerHTML = '<p style="text-align: center; color: #aaa; font-size: 0.9rem;">Yakında yeni duyurular eklenecektir.</p>';
+          return;
         }
+
+        savedNews.forEach((news, index) => {
+          const deleteBtnHtml = isAdminLoggedIn ? `<button class="delete-btn" onclick="deleteNews(${index})">Sil 🗑️</button>` : '';
+          const newsHtml = `
+            <div class="news-card">
+              ${deleteBtnHtml}
+              <h3>${news.title}</h3>
+              <p>${news.content}</p>
+              <span class="news-date">📅 ${news.date}</span>
+            </div>
+          `;
+          newsContainer.innerHTML += newsHtml;
+        });
       };
 
-      // Duyuru Ekleme
       addNewsBtn.addEventListener('click', () => {
         const title = newsTitleInput.value.trim();
         const content = newsContentInput.value.trim();
 
         if (title && content) {
           const savedNews = JSON.parse(localStorage.getItem('seha_news')) || [];
-          const newNews = {
+          savedNews.unshift({
             title: title,
             content: content,
             date: new Date().toLocaleDateString('tr-TR')
-          };
+          });
 
-          savedNews.unshift(newNews);
           localStorage.setItem('seha_news', JSON.stringify(savedNews));
-
           loadNews();
 
           newsTitleInput.value = '';
           newsContentInput.value = '';
           alert('Duyuru başarıyla eklendi!');
         } else {
-          alert('Lütfen başlık ve içerik girin.');
+          alert('Lütfen tüm alanları doldurun.');
         }
       });
 
-      // Sayfa Açıldığında Duyuruları Ekrana Bas
+      window.deleteNews = (index) => {
+        if (confirm('Bu duyuruyu silmek istediğinize emin misiniz?')) {
+          const savedNews = JSON.parse(localStorage.getItem('seha_news')) || [];
+          savedNews.splice(index, 1);
+          localStorage.setItem('seha_news', JSON.stringify(savedNews));
+          loadNews();
+        }
+      };
+
+      /* 5. BİZ FOTOĞRAFLARI YÖNETİMİ */
+      window.loadPhotos = () => {
+        const savedPhotos = JSON.parse(localStorage.getItem('seha_photos')) || [];
+        
+        bizContainer.innerHTML = `
+          <div class="biz-card">
+            <img src="https://picsum.photos/600/400?random=10" alt="Antrenmanlarımız">
+            <h3>Antrenmanlarımız</h3>
+          </div>
+          <div class="biz-card">
+            <img src="https://picsum.photos/600/400?random=11" alt="Maçtan Kalanlar">
+            <h3>Maçtan Kalanlar</h3>
+          </div>
+        `;
+
+        savedPhotos.forEach((photo, index) => {
+          const deleteBtnHtml = isAdminLoggedIn ? `<button class="delete-btn" onclick="deletePhoto(${index})">Sil 🗑️</button>` : '';
+          const photoHtml = `
+            <div class="biz-card">
+              ${deleteBtnHtml}
+              <img src="${photo.url}" alt="${photo.title}">
+              <h3>${photo.title}</h3>
+            </div>
+          `;
+          bizContainer.innerHTML += photoHtml;
+        });
+      };
+
+      addPhotoBtn.addEventListener('click', () => {
+        const title = photoTitleInput.value.trim();
+        const url = photoUrlInput.value.trim();
+
+        if (title && url) {
+          const savedPhotos = JSON.parse(localStorage.getItem('seha_photos')) || [];
+          savedPhotos.unshift({ title: title, url: url });
+
+          localStorage.setItem('seha_photos', JSON.stringify(savedPhotos));
+          loadPhotos();
+
+          photoTitleInput.value = '';
+          photoUrlInput.value = '';
+          alert('Fotoğraf galeriye eklendi!');
+        } else {
+          alert('Lütfen fotoğraf başlığı ve linki girin.');
+        }
+      });
+
+      window.deletePhoto = (index) => {
+        if (confirm('Bu fotoğrafı silmek istediğinize emin misiniz?')) {
+          const savedPhotos = JSON.parse(localStorage.getItem('seha_photos')) || [];
+          savedPhotos.splice(index, 1);
+          localStorage.setItem('seha_photos', JSON.stringify(savedPhotos));
+          loadPhotos();
+        }
+      };
+
+      // Sayfa yüklenince verileri ekrana bas
       loadNews();
+      loadPhotos();
 
     });
   </script>
