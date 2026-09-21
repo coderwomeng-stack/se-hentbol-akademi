@@ -671,9 +671,8 @@ Amacımız; genç kızlarımıza üst düzey spor eğitimi sunmak, onları hentb
     <p>&copy; 2026 SinanEBRAR HENTBOL Akademi. Tüm Hakları Saklıdır.</p>
   </footer>
 
+
 <!-- JAVASCRIPT KODLARI -->
-  <script>
-   <!-- JAVASCRIPT KODLARI -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
 
@@ -684,39 +683,39 @@ Amacımız; genç kızlarımıza üst düzey spor eğitimi sunmak, onları hentb
       if (burger && navLinks) {
         burger.addEventListener('click', () => {
           navLinks.classList.toggle('active');
-          burger.classList.toggle('toggle');
         });
 
-        // Menüdeki bir linke tıklandığında mobil menüyü kapat
         document.querySelectorAll('.nav-links a').forEach(link => {
           link.addEventListener('click', () => {
             navLinks.classList.remove('active');
-            burger.classList.remove('toggle');
           });
         });
       }
 
-      /* 2. TAKIM KADROLARI (GÖSTER / GİZLE) KONTROLÜ */
+      /* 2. TAKIM KADROLARI (GÖSTER / GİZLE) */
       const toggleButtons = document.querySelectorAll('.roster-btn');
 
       toggleButtons.forEach(button => {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+          
+          // Butonun ait olduğu kartı ve kadro kutusunu bul
           const card = button.closest('.team-card');
           const roster = card ? card.querySelector('.roster-container') : null;
 
           if (roster) {
-            // Görünürlük durumunu kontrol et
-            const isHidden = window.getComputedStyle(roster).display === 'none';
+            // Şu anki ekran görünürlüğünü kontrol et
+            const currentDisplay = window.getComputedStyle(roster).display;
 
-            if (isHidden) {
-              roster.style.display = 'flex';
+            if (currentDisplay === 'none') {
+              roster.setAttribute('style', 'display: flex !important; flex-direction: column !important;');
               button.textContent = 'Kadro Gizle 👆';
-              button.style.background = '#ffd166';
+              button.style.backgroundColor = '#ffd166';
               button.style.color = '#0b0c10';
             } else {
-              roster.style.display = 'none';
+              roster.setAttribute('style', 'display: none !important;');
               button.textContent = 'Kadro Göster 👇';
-              button.style.background = 'transparent';
+              button.style.backgroundColor = 'transparent';
               button.style.color = '#c5a059';
             }
           }
@@ -724,11 +723,11 @@ Amacımız; genç kızlarımıza üst düzey spor eğitimi sunmak, onları hentb
       });
 
     });
-  </script> 
+  </script>
           
 
       
       
-  </script>
+  
 </body>
 </html>
