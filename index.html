@@ -27,6 +27,7 @@
       background-color: #0b0c10;
       color: #ffffff;
       line-height: 1.6;
+      user-select: none;
     }
 
     a {
@@ -42,6 +43,7 @@
       z-index: 1000;
       border-bottom: 2px solid #c5a059;
       padding: 12px 0;
+      backdrop-filter: blur(10px);
     }
 
     .nav-container {
@@ -120,6 +122,7 @@
 
     .admin-nav-btn:hover {
       background: #ffd166;
+      box-shadow: 0 0 10px rgba(255, 209, 102, 0.5);
     }
 
     .hamburger {
@@ -504,6 +507,7 @@
       z-index: 10000;
       align-items: center;
       justify-content: center;
+      touch-action: none;
     }
 
     .story-container {
@@ -519,6 +523,7 @@
       flex-direction: column;
       justify-content: space-between;
       box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      transition: transform 0.1s ease;
     }
 
     /* STORY TEPESİ (PROGRESS BAR + BİLGİ) */
@@ -528,6 +533,7 @@
       padding: 15px 12px 10px 12px;
       background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
       z-index: 10;
+      transition: opacity 0.2s ease;
     }
 
     .story-progress-bars {
@@ -612,6 +618,69 @@
       font-size: 0.9rem;
       text-align: center;
       z-index: 10;
+      transition: opacity 0.2s ease;
+    }
+
+    /* EK SES BUTONU DİNAMİK */
+    .story-sound-btn {
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      border-radius: 50%;
+      width: 30px; height: 30px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; cursor: pointer;
+    }
+
+    /* DİNAMİK EK GERİ BİLDİRİM BİLDİRİMİ (TOAST) */
+    #seha-toast {
+      position: fixed;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #c5a059;
+      color: #0b0c10;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: 700;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+      z-index: 99999;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    #seha-toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* FLOATING ACTION BUTTON (DENEME ANTRENMANI / BAŞVURU) */
+    .fab-apply {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: linear-gradient(135deg, #34a862, #25834a);
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 50px;
+      font-weight: bold;
+      box-shadow: 0 8px 25px rgba(52, 168, 98, 0.4);
+      cursor: pointer;
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.3s ease;
+      border: 2px solid #ffffff33;
+    }
+    .fab-apply:hover { transform: scale(1.05); }
+
+    /* KATILIM FORMU MODAL */
+    #apply-modal {
+      display: none;
+      position: fixed;
+      top:0; left:0; width:100vw; height:100vh;
+      background: rgba(0,0,0,0.85);
+      z-index: 10001;
+      align-items: center;
+      justify-content: center;
     }
 
     footer {
@@ -855,14 +924,17 @@
 
   <!-- INSTAGRAM STORY MODAL (TAM EKRAN) -->
   <div id="story-modal">
-    <div class="story-container">
+    <div class="story-container" id="story-container">
       
       <!-- STORY ÜST BİLGİ -->
-      <div class="story-header">
+      <div class="story-header" id="story-header">
         <div class="story-progress-bars" id="story-progress-bars"></div>
         <div class="story-user-info">
           <span class="story-user-title" id="story-title">⚡ SinemEbrar Akademi</span>
-          <button class="story-close-btn" onclick="closeStoryModal()">&times;</button>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <button class="story-sound-btn" id="story-sound-toggle" style="display:none;" onclick="toggleAudio()">🔊</button>
+            <button class="story-close-btn" onclick="closeStoryModal()">&times;</button>
+          </div>
         </div>
       </div>
 
@@ -878,22 +950,64 @@
     </div>
   </div>
 
+  <!-- BİLDIRIM (TOAST) -->
+  <div id="seha-toast">İşlem Başarılı!</div>
+
+  <!-- FLOATING BAŞVURU BUTONU -->
+  <div class="fab-apply" onclick="openApplyModal()">
+    <span>🤾‍♀️</span>
+    <span>Akademiye Katıl</span>
+  </div>
+
+  <!-- AKADEMİ KATILIM MODALI -->
+  <div id="apply-modal">
+    <div class="admin-card" style="width: 90%; max-width: 450px; position:relative;">
+      <button onclick="closeApplyModal()" style="position:absolute; right:15px; top:15px; background:none; border:none; color:#fff; font-size:20px; cursor:pointer;">&times;</button>
+      <h3 style="color:#ffd166; font-family:'Oswald',sans-serif; margin-bottom:15px;">🤾‍♀️ Deneme Antrenmanı Başvurusu</h3>
+      <div class="admin-form-group">
+        <label>Sporcunun Adı Soyadı</label>
+        <input type="text" id="apply-name" class="admin-input" placeholder="Ad Soyad">
+      </div>
+      <div class="admin-form-group">
+        <label>Doğum Yılı</label>
+        <input type="number" id="apply-year" class="admin-input" placeholder="Örn: 2010">
+      </div>
+      <div class="admin-form-group">
+        <label>Veli Telefon Numarası</label>
+        <input type="tel" id="apply-phone" class="admin-input" placeholder="05XX XXX XX XX">
+      </div>
+      <button onclick="sendApplication()" class="admin-btn" style="width:100%;">Başvuruyu WhatsApp'tan Gönder 🚀</button>
+    </div>
+  </div>
+
   <footer>
     <p>&copy; 2026 SinemEbrar Hentbol Akademi. Tüm Hakları Saklıdır.</p>
   </footer>
 
-  <!-- SCRIPT -->
+  <!-- ADVANCED ULTIMATE SCRIPT -->
   <script>
     let isAdminLoggedIn = false;
     let currentStoryList = [];
     let currentStoryIndex = 0;
     let storyTimer = null;
+    let isPaused = false;
+    let progressVal = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let holdTimer = null;
 
     // VARSAYILAN MEDYALAR
     const defaultMedia = {
-      antrenman: [{ type: 'image', url: 'https://picsum.photos/600/900?random=10', caption: 'Bugünkü kondisyon çalışmamız 💪' }],
-      mac: [{ type: 'image', url: 'https://picsum.photos/600/900?random=11', caption: 'Son maçımızdan heyecanlı anlar 🤾‍♀️' }],
-      akademi: [{ type: 'image', url: 'https://picsum.photos/600/900?random=12', caption: 'Akademi ailemiz 🏆' }]
+      antrenman: [
+        { type: 'image', url: 'https://picsum.photos/600/900?random=10', caption: 'Bugünkü kondisyon çalışmamız 💪' },
+        { type: 'image', url: 'https://picsum.photos/600/900?random=20', caption: 'Şut teknikleri antrenmanı 🤾‍♀️' }
+      ],
+      mac: [
+        { type: 'image', url: 'https://picsum.photos/600/900?random=11', caption: 'Son maçımızdan heyecanlı anlar 🔥' }
+      ],
+      akademi: [
+        { type: 'image', url: 'https://picsum.photos/600/900?random=12', caption: 'Akademi ailemiz 🏆' }
+      ]
     };
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -936,6 +1050,7 @@
           loginError.style.display = 'none';
           adminPassInput.value = '';
           loadNews();
+          showToast("Hoşgeldiniz Öğretmenim! Yönetici modu aktif.");
         } else {
           loginError.style.display = 'block';
           adminPassInput.value = '';
@@ -948,6 +1063,7 @@
         panelBox.style.display = 'none';
         loginBox.style.display = 'block';
         loadNews();
+        showToast("Çıkış yapıldı.");
       });
 
       // HABER YÖNETİMİ
@@ -964,7 +1080,7 @@
           document.getElementById('news-title').value = '';
           document.getElementById('news-content').value = '';
           loadNews();
-          alert('Duyuru eklendi!');
+          showToast('Duyuru başarıyla yayınlandı!');
         }
       });
 
@@ -976,7 +1092,7 @@
         const caption = document.getElementById('media-caption').value.trim();
 
         if (fileInput.files.length === 0) {
-          alert('Lütfen bir fotoğraf veya video seçin.');
+          showToast('Lütfen bir fotoğraf veya video seçin!');
           return;
         }
 
@@ -993,14 +1109,91 @@
           localStorage.setItem('seha_story_media', JSON.stringify(savedMedia));
           document.getElementById('media-caption').value = '';
           fileInput.value = '';
-          alert('Medya eklendi!');
+          updateDynamicThumbs();
+          showToast('Medya hikayelere başarıyla eklendi! 📸');
         };
 
         reader.readAsDataURL(file);
       });
 
+      // STORY DOKUNUP BASILI TUTMA (PAUSE) İLE İLGİLİ EVENTLER
+      const storyContainer = document.getElementById('story-container');
+      
+      const startHold = () => {
+        holdTimer = setTimeout(() => {
+          isPaused = true;
+          document.getElementById('story-header').style.opacity = '0';
+          document.getElementById('story-caption').style.opacity = '0';
+          const vid = document.getElementById('story-video');
+          if(vid) vid.pause();
+        }, 150);
+      };
+
+      const endHold = () => {
+        clearTimeout(holdTimer);
+        if (isPaused) {
+          isPaused = false;
+          document.getElementById('story-header').style.opacity = '1';
+          document.getElementById('story-caption').style.opacity = '1';
+          const vid = document.getElementById('story-video');
+          if(vid) vid.play();
+        }
+      };
+
+      storyContainer.addEventListener('mousedown', startHold);
+      storyContainer.addEventListener('mouseup', endHold);
+      storyContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        startHold();
+      });
+      storyContainer.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        endHold();
+        handleSwipe();
+      });
+
+      // KLAVYEDEN CONTROL (SAĞ/SOL OK VE ESC)
+      document.addEventListener('keydown', (e) => {
+        const modal = document.getElementById('story-modal');
+        if (modal.style.display === 'flex') {
+          if (e.key === 'ArrowRight') nextStory();
+          if (e.key === 'ArrowLeft') prevStory();
+          if (e.key === 'Escape') closeStoryModal();
+        }
+      });
+
       loadNews();
+      updateDynamicThumbs();
     });
+
+    // TOAST BİLDİRİM
+    function showToast(text) {
+      const toast = document.getElementById('seha-toast');
+      toast.textContent = text;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    // SWIPE KONTROLÜ
+    function handleSwipe() {
+      if (touchEndX < touchStartX - 50) nextStory();
+      if (touchEndX > touchStartX + 50) prevStory();
+    }
+
+    // KART KAPAK RESİMLERİNİ DİNAMİK OLARAK SON EKLENENLE GÜNCELLE
+    function updateDynamicThumbs() {
+      const savedMedia = JSON.parse(localStorage.getItem('seha_story_media')) || defaultMedia;
+      ['antrenman', 'mac', 'akademi'].forEach(cat => {
+        if (savedMedia[cat] && savedMedia[cat].length > 0) {
+          const firstItem = savedMedia[cat][0];
+          const thumbBox = document.getElementById(`thumb-${cat}`);
+          if (thumbBox && firstItem.type === 'image') {
+            const img = thumbBox.querySelector('img');
+            if (img) img.src = firstItem.url;
+          }
+        }
+      });
+    }
 
     // HABERLERİ YÜKLE
     function loadNews() {
@@ -1032,6 +1225,7 @@
         newsList.splice(idx, 1);
         localStorage.setItem('seha_news', JSON.stringify(newsList));
         loadNews();
+        showToast('Duyuru silindi.');
       }
     }
 
@@ -1041,7 +1235,7 @@
       currentStoryList = savedMedia[category] || defaultMedia[category];
       
       if (currentStoryList.length === 0) {
-        alert('Bu kategoride henüz içerik yok.');
+        showToast('Bu kategoride henüz içerik yok.');
         return;
       }
 
@@ -1052,9 +1246,13 @@
 
     function renderStory() {
       clearInterval(storyTimer);
+      progressVal = 0;
+      isPaused = false;
+
       const mediaBox = document.getElementById('story-media-box');
       const captionBox = document.getElementById('story-caption');
       const progressBars = document.getElementById('story-progress-bars');
+      const soundBtn = document.getElementById('story-sound-toggle');
 
       const currentItem = currentStoryList[currentStoryIndex];
 
@@ -1073,27 +1271,38 @@
         progressBars.appendChild(bar);
       });
 
-      // MEDYA GÖSTERİMİ
+      // MEDYA GÖSTERİMİ & VİDEO DÜZENLEMESİ
       if (currentItem.type === 'video') {
         mediaBox.innerHTML = `<video src="${currentItem.url}" autoplay playsinline id="story-video"></video>`;
+        soundBtn.style.display = 'flex';
       } else {
         mediaBox.innerHTML = `<img src="${currentItem.url}" alt="Story">`;
+        soundBtn.style.display = 'none';
       }
 
       captionBox.textContent = currentItem.caption || '';
 
-      // ZAMANLAYICI / ANİMASYON
-      let progress = 0;
+      // ZAMANLAYICI
       const fill = document.getElementById('current-fill');
-
       storyTimer = setInterval(() => {
-        progress += 2;
-        if (fill) fill.style.width = progress + '%';
+        if (!isPaused) {
+          progressVal += 1.5;
+          if (fill) fill.style.width = progressVal + '%';
 
-        if (progress >= 100) {
-          nextStory();
+          if (progressVal >= 100) {
+            nextStory();
+          }
         }
-      }, 100);
+      }, 70);
+    }
+
+    function toggleAudio() {
+      const vid = document.getElementById('story-video');
+      const soundBtn = document.getElementById('story-sound-toggle');
+      if(vid) {
+        vid.muted = !vid.muted;
+        soundBtn.textContent = vid.muted ? '🔇' : '🔊';
+      }
     }
 
     function nextStory() {
@@ -1118,6 +1327,30 @@
       clearInterval(storyTimer);
       document.getElementById('story-modal').style.display = 'none';
       document.getElementById('story-media-box').innerHTML = '';
+    }
+
+    // DENEME ANTRENMANI BAŞVURU FORMU KONTROLLERİ
+    function openApplyModal() {
+      document.getElementById('apply-modal').style.display = 'flex';
+    }
+
+    function closeApplyModal() {
+      document.getElementById('apply-modal').style.display = 'none';
+    }
+
+    function sendApplication() {
+      const name = document.getElementById('apply-name').value.trim();
+      const year = document.getElementById('apply-year').value.trim();
+      const phone = document.getElementById('apply-phone').value.trim();
+
+      if (!name || !year || !phone) {
+        showToast('Lütfen tüm alanları doldurunuz.');
+        return;
+      }
+
+      const msg = `Merhaba SinemEbrar Hentbol Akademi! Deneme antrenmanı için başvuru yapmak istiyorum.%0A%0A👤 Sporcu: ${name}%0A📅 Doğum Yılı: ${year}%0A📞 İletişim: ${phone}`;
+      window.open(`https://wa.me/905000000000?text=${msg}`, '_blank');
+      closeApplyModal();
     }
   </script>
 </body>
