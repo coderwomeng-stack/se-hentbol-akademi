@@ -673,6 +673,8 @@ Amacımız; genç kızlarımıza üst düzey spor eğitimi sunmak, onları hentb
 
 <!-- JAVASCRIPT KODLARI -->
   <script>
+   <!-- JAVASCRIPT KODLARI -->
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
 
       /* 1. MOBİL BURGER MENÜ KONTROLÜ */
@@ -685,7 +687,7 @@ Amacımız; genç kızlarımıza üst düzey spor eğitimi sunmak, onları hentb
           burger.classList.toggle('toggle');
         });
 
-        // Menüdeki bir linke tıklandığında mobil menüyü otomatik kapat
+        // Menüdeki bir linke tıklandığında mobil menüyü kapat
         document.querySelectorAll('.nav-links a').forEach(link => {
           link.addEventListener('click', () => {
             navLinks.classList.remove('active');
@@ -694,34 +696,39 @@ Amacımız; genç kızlarımıza üst düzey spor eğitimi sunmak, onları hentb
         });
       }
 
-
       /* 2. TAKIM KADROLARI (GÖSTER / GİZLE) KONTROLÜ */
-      const toggleButtons = document.querySelectorAll('.btn-kadro');
+      const toggleButtons = document.querySelectorAll('.roster-btn');
 
       toggleButtons.forEach(button => {
         button.addEventListener('click', () => {
-          // Butonun bulunduğu kartın içindeki kadro konteynerini bul
           const card = button.closest('.team-card');
-          const roster = card.querySelector('.roster-container');
+          const roster = card ? card.querySelector('.roster-container') : null;
 
           if (roster) {
-            // Kadro görünürlüğünü aç/kapat
-            if (roster.style.display === 'block') {
-              roster.style.display = 'none';
-              button.textContent = 'Kadro Göster 👇';
-              button.style.background = '#c5a059';
-              button.style.color = '#0b0c10';
-            } else {
-              roster.style.display = 'block';
+            // Görünürlük durumunu kontrol et
+            const isHidden = window.getComputedStyle(roster).display === 'none';
+
+            if (isHidden) {
+              roster.style.display = 'flex';
               button.textContent = 'Kadro Gizle 👆';
               button.style.background = '#ffd166';
               button.style.color = '#0b0c10';
+            } else {
+              roster.style.display = 'none';
+              button.textContent = 'Kadro Göster 👇';
+              button.style.background = 'transparent';
+              button.style.color = '#c5a059';
             }
           }
         });
       });
 
     });
+  </script> 
+          
+
+      
+      
   </script>
 </body>
 </html>
