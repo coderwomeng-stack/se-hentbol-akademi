@@ -671,5 +671,57 @@ Amacımız; genç kızlarımıza üst düzey spor eğitimi sunmak, onları hentb
     <p>&copy; 2026 SinanEBRAR HENTBOL Akademi. Tüm Hakları Saklıdır.</p>
   </footer>
 
+<!-- JAVASCRIPT KODLARI -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      /* 1. MOBİL BURGER MENÜ KONTROLÜ */
+      const burger = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.nav-links');
+
+      if (burger && navLinks) {
+        burger.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+          burger.classList.toggle('toggle');
+        });
+
+        // Menüdeki bir linke tıklandığında mobil menüyü otomatik kapat
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            burger.classList.remove('toggle');
+          });
+        });
+      }
+
+
+      /* 2. TAKIM KADROLARI (GÖSTER / GİZLE) KONTROLÜ */
+      const toggleButtons = document.querySelectorAll('.btn-kadro');
+
+      toggleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Butonun bulunduğu kartın içindeki kadro konteynerini bul
+          const card = button.closest('.team-card');
+          const roster = card.querySelector('.roster-container');
+
+          if (roster) {
+            // Kadro görünürlüğünü aç/kapat
+            if (roster.style.display === 'block') {
+              roster.style.display = 'none';
+              button.textContent = 'Kadro Göster 👇';
+              button.style.background = '#c5a059';
+              button.style.color = '#0b0c10';
+            } else {
+              roster.style.display = 'block';
+              button.textContent = 'Kadro Gizle 👆';
+              button.style.background = '#ffd166';
+              button.style.color = '#0b0c10';
+            }
+          }
+        });
+      });
+
+    });
+  </script>
 </body>
 </html>
