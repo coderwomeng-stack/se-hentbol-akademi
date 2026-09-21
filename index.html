@@ -19,6 +19,10 @@
       font-family: 'Montserrat', sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background-color: #0b0c10;
       color: #ffffff;
@@ -49,7 +53,6 @@
       align-items: center;
     }
 
-    /* LOGO VE MARKA */
     .brand {
       display: flex;
       align-items: center;
@@ -88,7 +91,6 @@
       color: #ffffff;
     }
 
-    /* NAV LINKS (MASAÜSTÜ) */
     .nav-links {
       display: flex;
       list-style: none;
@@ -120,7 +122,6 @@
       background: #ffd166;
     }
 
-    /* HAMBURGER BUTONU */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -141,12 +142,8 @@
       border-radius: 2px;
     }
 
-    /* MOBİL UYUMLULUK */
     @media (max-width: 900px) {
-      .hamburger {
-        display: flex;
-      }
-
+      .hamburger { display: flex; }
       .nav-links {
         display: flex !important;
         position: fixed;
@@ -162,21 +159,11 @@
         gap: 25px;
         transition: right 0.4s ease;
       }
-
-      .nav-links.active {
-        right: 0;
-      }
+      .nav-links.active { right: 0; }
     }
 
-    /* GENEL SEKSİYON DÜZENİ */
-    .section {
-      padding: 50px 20px;
-    }
-
-    .container {
-      max-width: 1300px;
-      margin: 0 auto;
-    }
+    .section { padding: 50px 20px; }
+    .container { max-width: 1300px; margin: 0 auto; }
 
     .section-title {
       font-family: 'Oswald', sans-serif;
@@ -195,7 +182,6 @@
       font-size: 0.95rem;
     }
 
-    /* HERO SEKSİYONU */
     .hero {
       background: linear-gradient(180deg, #0b0c10 0%, #12141c 100%);
       text-align: center;
@@ -217,7 +203,6 @@
       margin-bottom: 20px;
     }
 
-    /* INSTAGRAM BUTTON */
     .insta-btn {
       display: inline-block;
       background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
@@ -230,9 +215,7 @@
       transition: transform 0.3s ease;
     }
 
-    .insta-btn:hover {
-      transform: translateY(-3px);
-    }
+    .insta-btn:hover { transform: translateY(-3px); }
 
     /* TAKIMLAR SEKSİYONU */
     .teams-grid {
@@ -242,13 +225,8 @@
       align-items: start;
     }
 
-    @media (max-width: 1100px) {
-      .teams-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    @media (max-width: 700px) {
-      .teams-grid { grid-template-columns: repeat(1, 1fr); }
-    }
+    @media (max-width: 1100px) { .teams-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 700px) { .teams-grid { grid-template-columns: repeat(1, 1fr); } }
 
     .team-card {
       background: #12141c;
@@ -260,9 +238,7 @@
       transition: transform 0.3s ease;
     }
 
-    .team-card:hover {
-      transform: translateY(-4px);
-    }
+    .team-card:hover { transform: translateY(-4px); }
 
     .team-card img {
       width: 100%;
@@ -278,7 +254,6 @@
       font-size: 1.05rem;
     }
 
-    /* KADRO GÖSTER BUTONU */
     .roster-btn {
       background: transparent;
       border: 1px solid #c5a059;
@@ -297,7 +272,6 @@
       color: #0b0c10;
     }
 
-    /* GİZLİ OYUNCU KADROSU KUTUSU */
     .roster-container {
       display: none;
       padding: 8px;
@@ -339,7 +313,7 @@
       font-weight: 600;
     }
 
-    /* BİZ BÖLÜMÜ KARTLARI */
+    /* BİZ BÖLÜMÜ / INSTAGRAM HIGHLIGHTS KARTLARI */
     .biz-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -348,37 +322,67 @@
 
     .biz-card {
       background: #12141c;
-      border: 1px solid #c5a059;
-      border-radius: 12px;
+      border: 2px solid #c5a059;
+      border-radius: 16px;
       overflow: hidden;
       text-align: center;
       position: relative;
+      cursor: pointer;
+      transition: transform 0.3s ease, border-color 0.3s ease;
     }
 
-    .biz-card img {
+    .biz-card:hover {
+      transform: translateY(-5px);
+      border-color: #ffd166;
+    }
+
+    .biz-card-thumb {
+      position: relative;
       width: 100%;
-      height: 200px;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .biz-card-thumb img, .biz-card-thumb video {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+    }
+
+    /* INSTAGRAM STORY HALKA SİMGESİ */
+    .story-ring-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      padding: 3px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .story-ring-inner {
+      background: #12141c;
+      border-radius: 50%;
+      padding: 6px;
+      color: #fff;
+      font-size: 0.8rem;
     }
 
     .biz-card h3 {
       font-family: 'Oswald', sans-serif;
       color: #ffd166;
       padding: 15px;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
 
-    /* FOOTER */
-    footer {
-      background: #07080a;
-      text-align: center;
-      padding: 20px;
-      border-top: 1px solid rgba(197, 160, 89, 0.2);
-      font-size: 0.85rem;
-      color: #888;
-    }
-
-    /* MAÇ FİKSTÜRÜ GRID YAPISI */
+    /* HABERLER & MAÇLAR */
     .matches-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -391,7 +395,6 @@
       border: 1px solid #c5a059;
       border-radius: 10px;
       padding: 18px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
     .match-details {
@@ -404,52 +407,18 @@
       margin-bottom: 12px;
     }
 
-    .match-league {
-      color: #ffd166;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    .match-date {
-      color: #aaa;
-    }
+    .match-league { color: #ffd166; font-weight: 700; }
+    .match-date { color: #aaa; }
 
     .match-body {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 5px 0;
     }
 
-    .team-name {
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #ffffff;
-    }
+    .team-name { font-family: 'Oswald', sans-serif; font-size: 1.1rem; }
+    .match-vs { background: #c5a059; color: #0b0c10; font-weight: 700; padding: 4px 10px; border-radius: 20px; font-size: 0.85rem; }
 
-    .match-vs {
-      background: #c5a059;
-      color: #0b0c10;
-      font-family: 'Oswald', sans-serif;
-      font-weight: 700;
-      font-size: 0.85rem;
-      padding: 4px 10px;
-      border-radius: 20px;
-    }
-
-    .match-score {
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #34a862;
-      background: #1c1f2b;
-      padding: 4px 12px;
-      border-radius: 6px;
-      border: 1px solid #34a862;
-    }
-
-    /* HABERLER KUTUSU STİLİ */
     .news-card {
       background: #12141c;
       border: 1px solid #c5a059;
@@ -459,224 +428,205 @@
       position: relative;
     }
 
-    .news-card h3 {
-      color: #ffd166;
-      font-family: 'Oswald', sans-serif;
-      margin-bottom: 5px;
-    }
-
-    .news-card p {
-      color: #ccc;
-      font-size: 0.9rem;
-    }
-
-    .news-card .news-date {
-      color: #888;
-      font-size: 0.75rem;
-      margin-top: 8px;
-      display: block;
-    }
+    .news-card h3 { color: #ffd166; font-family: 'Oswald', sans-serif; }
+    .news-card p { color: #ccc; font-size: 0.9rem; }
+    .news-card .news-date { color: #888; font-size: 0.75rem; margin-top: 8px; display: block; }
 
     .delete-btn {
-      position: absolute;
-      top: 12px;
-      right: 12px;
       background: #e63946;
       color: #fff;
       border: none;
-      padding: 4px 8px;
+      padding: 5px 10px;
       border-radius: 4px;
       cursor: pointer;
       font-size: 0.75rem;
       font-weight: bold;
     }
 
-    .delete-btn:hover {
-      background: #d62828;
+    /* SAYFA İÇİ SAYFA ALTI ADMIN PANELİ */
+    .inline-admin-section {
+      background: #0d0e14;
+      border-top: 2px solid #c5a059;
+      padding: 40px 20px;
+      margin-top: 50px;
     }
 
-    /* ========================================================= */
-    /* YENİ MODERN ADMIN PANELİ STİLLERİ (DASHBOARD TEMASI) */
-    /* ========================================================= */
-    #admin-modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(5, 6, 8, 0.88);
-      backdrop-filter: blur(8px);
-      z-index: 9999;
-      align-items: center;
-      justify-content: center;
-      padding: 15px;
-    }
-
-    /* Modern Giriş Kutusu */
-    .modern-admin-card {
+    .admin-card {
       background: #12151e;
       border: 1px solid rgba(197, 160, 89, 0.3);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-      border-radius: 16px;
-      width: 100%;
-      max-width: 420px;
-      padding: 30px;
-      text-align: center;
-      position: relative;
-      animation: modalFadeIn 0.3s ease;
-    }
-
-    /* Modern Dashboard Kutusu */
-    .modern-dashboard-card {
-      background: #12151e;
-      border: 1px solid rgba(197, 160, 89, 0.3);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.7);
-      border-radius: 16px;
-      width: 100%;
-      max-width: 650px;
+      border-radius: 12px;
       padding: 25px;
-      position: relative;
-      animation: modalFadeIn 0.3s ease;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    @keyframes modalFadeIn {
-      from { opacity: 0; transform: translateY(-15px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .admin-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding-bottom: 15px;
-      margin-bottom: 20px;
-    }
-
-    .admin-header h3 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.4rem;
-      color: #ffd166;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .close-btn-modern {
-      background: rgba(255,255,255,0.05);
-      border: none;
-      color: #aaa;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 16px;
-      transition: all 0.2s;
-    }
-
-    .close-btn-modern:hover {
-      background: #e63946;
-      color: #fff;
-    }
-
-    /* Sekmeli Yapı (Tabs) */
-    .admin-tabs {
-      display: flex;
-      gap: 8px;
-      background: rgba(0,0,0,0.3);
-      padding: 5px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-
-    .tab-btn {
-      flex: 1;
-      padding: 8px 12px;
-      background: transparent;
-      border: none;
-      color: #888;
-      font-weight: 600;
-      font-size: 0.8rem;
-      border-radius: 7px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .tab-btn.active {
-      background: #c5a059;
-      color: #0b0c10;
-    }
-
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    /* Inputs & Form Elemanları */
-    .input-group {
+    .admin-form-group {
       margin-bottom: 15px;
-      text-align: left;
     }
 
-    .input-group label {
+    .admin-form-group label {
       display: block;
-      font-size: 0.75rem;
       color: #aaa;
+      font-size: 0.8rem;
       margin-bottom: 5px;
       font-weight: 600;
     }
 
-    .modern-input {
+    .admin-input {
       width: 100%;
-      padding: 11px 14px;
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.1);
+      padding: 10px;
       background: #0b0c10;
+      border: 1px solid rgba(255, 255, 255, 0.1);
       color: #fff;
-      font-size: 0.85rem;
+      border-radius: 6px;
       outline: none;
-      transition: border 0.2s;
     }
 
-    .modern-input:focus {
-      border-color: #c5a059;
-    }
+    .admin-input:focus { border-color: #c5a059; }
 
-    .btn-primary-modern {
-      width: 100%;
-      padding: 12px;
-      background: linear-gradient(135deg, #c5a059 0%, #ffd166 100%);
+    .admin-btn {
+      background: linear-gradient(135deg, #c5a059, #ffd166);
       color: #0b0c10;
       border: none;
-      border-radius: 8px;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* INSTAGRAM STORY FULLSCREEN MODAL */
+    #story-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .story-container {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      height: 90vh;
+      max-height: 750px;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    }
+
+    /* STORY TEPESİ (PROGRESS BAR + BİLGİ) */
+    .story-header {
+      position: absolute;
+      top: 0; left: 0; width: 100%;
+      padding: 15px 12px 10px 12px;
+      background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+      z-index: 10;
+    }
+
+    .story-progress-bars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+
+    .story-progress-bar {
+      flex: 1;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .story-progress-fill {
+      width: 0%;
+      height: 100%;
+      background: #ffffff;
+      transition: width 0.1s linear;
+    }
+
+    .story-user-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+    }
+
+    .story-user-title {
       font-weight: 700;
       font-size: 0.9rem;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
-
-    .btn-primary-modern:hover {
-      opacity: 0.9;
-    }
-
-    .logout-link {
-      color: #e63946;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      background: none;
-      border: none;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 8px;
+    }
+
+    .story-close-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* STORY MEDYA İÇERİĞİ */
+    .story-media-wrapper {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #050505;
+    }
+
+    .story-media-wrapper img, .story-media-wrapper video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* STORY DOKUNMA ALANLARI (SAĞ / SOL İLERLEME) */
+    .story-tap-left, .story-tap-right {
+      position: absolute;
+      top: 60px;
+      bottom: 80px;
+      width: 40%;
+      z-index: 5;
+    }
+    .story-tap-left { left: 0; }
+    .story-tap-right { right: 0; }
+
+    /* STORY ALTYAZI / AÇIKLAMA */
+    .story-caption-box {
+      position: absolute;
+      bottom: 0; left: 0; width: 100%;
+      padding: 20px 15px 25px 15px;
+      background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, transparent 100%);
+      color: #fff;
+      font-size: 0.9rem;
+      text-align: center;
+      z-index: 10;
+    }
+
+    footer {
+      background: #07080a;
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid rgba(197, 160, 89, 0.2);
+      font-size: 0.85rem;
+      color: #888;
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER / MASAÜSTÜ & MOBİL MENÜ -->
+  <!-- HEADER -->
   <header>
     <div class="nav-container">
       <a href="#" class="brand">
@@ -687,26 +637,22 @@
         <span class="brand-title">SinemEbrar Hentbol Akademi</span>
       </a>
 
-      <!-- HAMBURGER BUTON -->
       <button class="hamburger" id="hamburger-btn">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
 
-      <!-- MENÜ LİNKLERİ -->
       <ul class="nav-links">
         <li><a href="#duyurular">Haberler</a></li>
         <li><a href="#takimlar">Takımlarımız</a></li>
         <li><a href="#maclar">Maçlar</a></li>
         <li><a href="#biz">Biz</a></li>
         <li><a href="#hakkimizda">Hakkımızda</a></li>
-        <li><a href="#" id="open-admin-btn" class="admin-nav-btn">⚡ Yönetici Paneli</a></li>
+        <li><a href="#admin-panel" class="admin-nav-btn">⚡ Yönetici Girişi</a></li>
       </ul>
     </div>
   </header>
 
-  <!-- HERO BÖLÜMÜ -->
+  <!-- HERO -->
   <section class="hero">
     <div class="container">
       <h1>"Sert Savunma, Keskin Atış, Kesintisiz Mücadele."</h1>
@@ -715,114 +661,73 @@
     </div>
   </section>
 
-  <!-- HABERLER / DUYURULAR -->
+  <!-- HABERLER & DUYURULAR -->
   <section id="duyurular" class="section">
     <div class="container">
       <h2 class="section-title">HABERLER & DUYURULAR</h2>
       <p class="section-subtitle">Kulübümüzden En Son Gelişmeler</p>
-      
-      <div id="news-container">
-        <!-- Eklenen duyurular buraya akacak -->
-      </div>
+      <div id="news-container"></div>
     </div>
   </section>
 
-  <!-- TAKIMLARIMIZ BÖLÜMÜ -->
+  <!-- TAKIMLARIMIZ -->
   <section id="takimlar" class="section" style="background: #0f1117;">
     <div class="container">
       <h2 class="section-title">TAKIMLARIMIZ</h2>
       <p class="section-subtitle">SinemEbrar Hentbol Akademi Yaş Kategorileri</p>
-      
+
       <div class="teams-grid">
-        <!-- 1. TAKIM -->
         <div class="team-card">
           <img src="https://picsum.photos/400/300?random=1" alt="Kadınlar 2. Lig">
           <h3>Kadınlar 2. Lig</h3>
           <button class="roster-btn">Kadro Göster 👇</button>
-
           <div class="roster-container">
             <div class="player-card"><span class="player-number">01</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Kaleci</span></div>
-            <div class="player-card"><span class="player-number">02</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sol Kanat</span></div>
-            <div class="player-card"><span class="player-number">03</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sol Oyun Kurucu</span></div>
-            <div class="player-card"><span class="player-number">04</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Orta Oyun Kurucu</span></div>
-            <div class="player-card"><span class="player-number">05</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sağ Oyun Kurucu</span></div>
-            <div class="player-card"><span class="player-number">06</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sağ Kanat</span></div>
             <div class="player-card"><span class="player-number">07</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Pivote</span></div>
           </div>
         </div>
 
-        <!-- 2. TAKIM -->
         <div class="team-card">
           <img src="https://picsum.photos/400/300?random=2" alt="Genç Kızlar">
           <h3>Genç Kızlar</h3>
           <button class="roster-btn">Kadro Göster 👇</button>
-
           <div class="roster-container">
             <div class="player-card"><span class="player-number">01</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Kaleci</span></div>
-            <div class="player-card"><span class="player-number">02</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sol Kanat</span></div>
-            <div class="player-card"><span class="player-number">03</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sol Oyun Kurucu</span></div>
-            <div class="player-card"><span class="player-number">04</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Orta Oyun Kurucu</span></div>
-            <div class="player-card"><span class="player-number">05</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sağ Oyun Kurucu</span></div>
-            <div class="player-card"><span class="player-number">06</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sağ Kanat</span></div>
-            <div class="player-card"><span class="player-number">07</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Pivote</span></div>
+            <div class="player-card"><span class="player-number">10</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Oyun Kurucu</span></div>
           </div>
         </div>
 
-        <!-- 3. TAKIM -->
         <div class="team-card">
           <img src="https://picsum.photos/400/300?random=3" alt="Yıldız Kızlar">
           <h3>Yıldız Kızlar</h3>
           <button class="roster-btn">Kadro Göster 👇</button>
-
           <div class="roster-container">
-            <div class="player-card"><span class="player-number">01</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Kaleci</span></div>
-            <div class="player-card"><span class="player-number">02</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sol Kanat</span></div>
-            <div class="player-card"><span class="player-number">03</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sol Oyun Kurucu</span></div>
-            <div class="player-card"><span class="player-number">04</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Orta Oyun Kurucu</span></div>
-            <div class="player-card"><span class="player-number">05</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sağ Oyun Kurucu</span></div>
-            <div class="player-card"><span class="player-number">06</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sağ Kanat</span></div>
-            <div class="player-card"><span class="player-number">07</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Pivote</span></div>
+            <div class="player-card"><span class="player-number">05</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sağ Kanat</span></div>
           </div>
         </div>
 
-        <!-- 4. TAKIM -->
         <div class="team-card">
           <img src="https://picsum.photos/400/300?random=4" alt="Küçük Kızlar">
           <h3>Küçük Kızlar</h3>
           <button class="roster-btn">Kadro Göster 👇</button>
-
           <div class="roster-container">
-            <div class="player-card"><span class="player-number">01</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Kaleci</span></div>
-            <div class="player-card"><span class="player-number">02</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sol Kanat</span></div>
-            <div class="player-card"><span class="player-number">03</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sol Oyun Kurucu</span></div>
-            <div class="player-card"><span class="player-number">04</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Orta Oyun Kurucu</span></div>
-            <div class="player-card"><span class="player-number">05</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sağ Oyun Kurucu</span></div>
-            <div class="player-card"><span class="player-number">06</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sağ Kanat</span></div>
-            <div class="player-card"><span class="player-number">07</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Pivote</span></div>
+            <div class="player-card"><span class="player-number">03</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sol Kanat</span></div>
           </div>
         </div>
 
-        <!-- 5. TAKIM -->
         <div class="team-card">
           <img src="https://picsum.photos/400/300?random=5" alt="Minik Kızlar">
           <h3>Minik Kızlar</h3>
           <button class="roster-btn">Kadro Göster 👇</button>
-
           <div class="roster-container">
-            <div class="player-card"><span class="player-number">01</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Kaleci</span></div>
-            <div class="player-card"><span class="player-number">02</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sol Kanat</span></div>
-            <div class="player-card"><span class="player-number">03</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sol Oyun Kurucu</span></div>
-            <div class="player-card"><span class="player-number">04</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Orta Oyun Kurucu</span></div>
-            <div class="player-card"><span class="player-number">05</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sağ Oyun Kurucu</span></div>
-            <div class="player-card"><span class="player-number">06</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Sağ Kanat</span></div>
-            <div class="player-card"><span class="player-number">07</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Pivote</span></div>
+            <div class="player-card"><span class="player-number">02</span><span class="player-name">Oyuncu Adı</span><span class="player-pos">Kaleci</span></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MAÇLAR SEKSİYONU -->
+  <!-- MAÇLAR -->
   <section id="maclar" class="section">
     <div class="container">
       <h2 class="section-title">MAÇ FİKSTÜRÜ</h2>
@@ -835,244 +740,206 @@
             <span class="match-date">📅 15 Kasım 2026 - 14:00</span>
           </div>
           <div class="match-body">
-            <div class="team home"><span class="team-name">SinemEbrar SK</span></div>
-            <div class="match-vs">VS</div>
-            <div class="team away"><span class="team-name">Anadolu GSK</span></div>
-          </div>
-        </div>
-
-        <div class="match-card">
-          <div class="match-details">
-            <span class="match-league">Genç Kızlar Ligi</span>
-            <span class="match-date">📅 28 Ekim 2026 - 16:30</span>
-          </div>
-          <div class="match-body">
-            <div class="team home"><span class="team-name">Gelişim SK</span></div>
-            <div class="match-score">24 - 28</div>
-            <div class="team away"><span class="team-name">SinemEbrar SK</span></div>
+            <span class="team-name">SinemEbrar SK</span>
+            <span class="match-vs">VS</span>
+            <span class="team-name">Anadolu GSK</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- BİZ SEKSİYONU -->
+  <!-- BİZ BÖLÜMÜ (INSTAGRAM HIGHLIGHTS / STORY FORMATI) -->
   <section id="biz" class="section" style="background: #0f1117;">
     <div class="container">
       <h2 class="section-title">BİZ</h2>
-      <p class="section-subtitle">Kulübümüzden Anlar ve Çalışmalar</p>
+      <p class="section-subtitle">Fotoğrafa/Karta Dokunarak Öne Çıkan Hikayeleri İzleyebilirsiniz 📸</p>
       
-      <div class="biz-grid" id="biz-container">
-        <div class="biz-card">
-          <img src="https://picsum.photos/600/400?random=10" alt="Antrenmanlarımız">
-          <h3>Antrenmanlarımız</h3>
+      <div class="biz-grid">
+        <!-- 1. KATEGORİ: ANTRENMANLAR -->
+        <div class="biz-card" onclick="openStoryModal('antrenman')">
+          <div class="biz-card-thumb" id="thumb-antrenman">
+            <img src="https://picsum.photos/600/400?random=10" alt="Antrenmanlarımız">
+            <div class="story-ring-badge"><div class="story-ring-inner">▶</div></div>
+          </div>
+          <h3>🏋️‍♀️ Antrenmanlarımız</h3>
         </div>
-        <div class="biz-card">
-          <img src="https://picsum.photos/600/400?random=11" alt="Maçtan Kalanlar">
-          <h3>Maçtan Kalanlar</h3>
+
+        <!-- 2. KATEGORİ: MAÇLAR -->
+        <div class="biz-card" onclick="openStoryModal('mac')">
+          <div class="biz-card-thumb" id="thumb-mac">
+            <img src="https://picsum.photos/600/400?random=11" alt="Maç Görselleri">
+            <div class="story-ring-badge"><div class="story-ring-inner">▶</div></div>
+          </div>
+          <h3>🤾‍♀️ Maç Anları</h3>
+        </div>
+
+        <!-- 3. KATEGORİ: AKADEMİ / ETKİNLİK -->
+        <div class="biz-card" onclick="openStoryModal('akademi')">
+          <div class="biz-card-thumb" id="thumb-akademi">
+            <img src="https://picsum.photos/600/400?random=12" alt="Akademi">
+            <div class="story-ring-badge"><div class="story-ring-inner">▶</div></div>
+          </div>
+          <h3>🏆 Akademi & Etkinlikler</h3>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HAKKIMIZDA SEKSİYONU -->
+  <!-- HAKKIMIZDA -->
   <section id="hakkimizda" class="section">
     <div class="container" style="text-align: center;">
       <h2 class="section-title">HAKKIMIZDA</h2>
       <p class="section-subtitle">"Geleceğe Atılan Doğru Bir Adım"</p>
       <p style="color: #ccc; font-size: 0.95rem; line-height: 1.8; max-width: 800px; margin: 0 auto;">
         SinemEbrar Hentbol Akademi, kulüp kültürünü ve spor disiplinini bir devlet lisesi çatısı altında harmanlayan kurucumuz <strong style="color: #ffd166;">Sinem Ebrar</strong>'ın kararlı liderliğiyle kurulmuştur.
-        Amacımız; genç kızlarımıza üst düzey spor eğitimi sunmak, onları hentbolun dinamizmiyle şekillendirip hem sahada hem yaşamda özgüvenli bireyler kılmaktır.
       </p>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- SAYFA İÇİ YÖNETİCİ GİRİŞİ VE KONTROL PANELİ -->
+  <section id="admin-panel" class="inline-admin-section">
+    <div class="container">
+      
+      <!-- GİRİŞ FORMU -->
+      <div id="login-box" class="admin-card">
+        <h2 class="section-title" style="margin-bottom: 15px;">🔒 YÖNETİCİ GİRİŞİ</h2>
+        <div class="admin-form-group">
+          <label for="admin-pass">Yönetici Şifresi</label>
+          <input type="password" id="admin-pass" class="admin-input" placeholder="Şifrenizi girin (Varsayılan: admin)">
+        </div>
+        <button id="login-btn" class="admin-btn">Giriş Yap</button>
+        <p id="login-error" style="color: #e63946; font-size: 0.85rem; margin-top: 10px; display: none;">⚠️ Hatalı şifre!</p>
+      </div>
+
+      <!-- YÖNETİM DASHBOARD'I (GİRİŞ YAPILINCA AÇILIR) -->
+      <div id="panel-box" class="admin-card" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <h2 class="section-title" style="font-size: 1.5rem; text-align: left;">⚡ YÖNETİM PANELİ</h2>
+          <button id="logout-btn" class="delete-btn">Çıkış Yap 🚪</button>
+        </div>
+
+        <h3 style="color: #ffd166; margin-bottom: 10px; font-size: 1rem;">1. Haber / Duyuru Ekle</h3>
+        <div class="admin-form-group">
+          <input type="text" id="news-title" class="admin-input" placeholder="Haber Başlığı">
+        </div>
+        <div class="admin-form-group">
+          <textarea id="news-content" class="admin-input" style="height: 70px;" placeholder="Haber İçeriği..."></textarea>
+        </div>
+        <button id="add-news-btn" class="admin-btn" style="margin-bottom: 25px;">Duyuru Ekle</button>
+
+        <hr style="border-color: rgba(255,255,255,0.1); margin-bottom: 20px;">
+
+        <h3 style="color: #ffd166; margin-bottom: 10px; font-size: 1rem;">2. "Biz" Bölümüne / Öne Çıkanlara Fotoğraf-Video Ekle</h3>
+        <div class="admin-form-group">
+          <label>Kategori Seçin</label>
+          <select id="media-category" class="admin-input">
+            <option value="antrenman">🏋️‍♀️ Antrenmanlarımız</option>
+            <option value="mac">🤾‍♀️ Maç Görselleri</option>
+            <option value="akademi">🏆 Akademi & Etkinlikler</option>
+          </select>
+        </div>
+        <div class="admin-form-group">
+          <label>Galerinizden Fotoğraf/Video Seçin</label>
+          <input type="file" id="media-file" class="admin-input" accept="image/*,video/*">
+        </div>
+        <div class="admin-form-group">
+          <label>Fotoğraf/Video Açıklaması (Altyazı)</label>
+          <input type="text" id="media-caption" class="admin-input" placeholder="Örn: Bugünkü şut antrenmanımızdan kareler...">
+        </div>
+        <button id="add-media-btn" class="admin-btn">Medyayı Yükle</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INSTAGRAM STORY MODAL (TAM EKRAN) -->
+  <div id="story-modal">
+    <div class="story-container">
+      
+      <!-- STORY ÜST BİLGİ -->
+      <div class="story-header">
+        <div class="story-progress-bars" id="story-progress-bars"></div>
+        <div class="story-user-info">
+          <span class="story-user-title" id="story-title">⚡ SinemEbrar Akademi</span>
+          <button class="story-close-btn" onclick="closeStoryModal()">&times;</button>
+        </div>
+      </div>
+
+      <!-- DOKUNMA ALANLARI -->
+      <div class="story-tap-left" onclick="prevStory()"></div>
+      <div class="story-tap-right" onclick="nextStory()"></div>
+
+      <!-- MEDYA ALANI -->
+      <div class="story-media-wrapper" id="story-media-box"></div>
+
+      <!-- AÇIKLAMA METNİ -->
+      <div class="story-caption-box" id="story-caption"></div>
+    </div>
+  </div>
+
   <footer>
     <p>&copy; 2026 SinemEbrar Hentbol Akademi. Tüm Hakları Saklıdır.</p>
   </footer>
 
-  <!-- MODERN YÖNETİCİ PANELSİ MODAL -->
-  <div id="admin-modal">
-    
-    <!-- 1. GİRİŞ KUTUSU -->
-    <div id="login-box" class="modern-admin-card">
-      <div class="admin-header">
-        <h3>🔒 Yönetici Girişi</h3>
-        <button class="close-btn-modern close-admin">&times;</button>
-      </div>
-
-      <div class="input-group">
-        <label for="admin-pass">Erişim Şifresi</label>
-        <input type="password" id="admin-pass" class="modern-input" placeholder="Şifreyi girin (admin)">
-      </div>
-
-      <button id="login-btn" class="btn-primary-modern">Sisteme Giriş Yap</button>
-      <p id="login-error" style="color: #e63946; font-size: 0.8rem; margin-top: 12px; display: none;">⚠️ Hatalı şifre girdiniz!</p>
-    </div>
-
-    <!-- 2. MODERN YÖNETİM DASHBOARD'U -->
-    <div id="panel-box" class="modern-dashboard-card" style="display: none;">
-      <div class="admin-header">
-        <h3>⚡ Kontrol Paneli</h3>
-        <div style="display: flex; align-items: center; gap: 15px;">
-          <button id="logout-btn" class="logout-link">🚪 Çıkış</button>
-          <button class="close-btn-modern close-admin">&times;</button>
-        </div>
-      </div>
-
-      <!-- DASHBOARD SEKMELERİ -->
-      <div class="admin-tabs">
-        <button class="tab-btn active" data-tab="tab-news">📢 Duyurular</button>
-        <button class="tab-btn" data-tab="tab-gallery">🖼️ Galeri / Biz</button>
-      </div>
-
-      <!-- SEKME 1: DUYURULAR -->
-      <div id="tab-news" class="tab-content active">
-        <div class="input-group">
-          <label>Duyuru Başlığı</label>
-          <input type="text" id="news-title" class="modern-input" placeholder="Örn: Yeni Sezon Seçmeleri Başlıyor">
-        </div>
-        <div class="input-group">
-          <label>Duyuru İçeriği</label>
-          <textarea id="news-content" class="modern-input" style="height: 80px; resize: none;" placeholder="Duyurunun detaylarını buraya yazın..."></textarea>
-        </div>
-        <button id="add-news-btn" class="btn-primary-modern">Duyuruyu Yayınla</button>
-      </div>
-
-      <!-- SEKME 2: FOTOĞRAF GALERİSİ -->
-      <div id="tab-gallery" class="tab-content">
-        <div class="input-group">
-          <label>Fotoğraf Başlığı</label>
-          <input type="text" id="photo-title" class="modern-input" placeholder="Örn: Şampiyonluk Kupası">
-        </div>
-        <div class="input-group">
-          <label>Görsel Bağlantısı (URL)</label>
-          <input type="text" id="photo-url" class="modern-input" placeholder="https://...">
-        </div>
-        <button id="add-photo-btn" class="btn-primary-modern">Fotoğrafı Ekle</button>
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- JAVASCRIPT KODLARI -->
+  <!-- SCRIPT -->
   <script>
     let isAdminLoggedIn = false;
+    let currentStoryList = [];
+    let currentStoryIndex = 0;
+    let storyTimer = null;
+
+    // VARSAYILAN MEDYALAR
+    const defaultMedia = {
+      antrenman: [{ type: 'image', url: 'https://picsum.photos/600/900?random=10', caption: 'Bugünkü kondisyon çalışmamız 💪' }],
+      mac: [{ type: 'image', url: 'https://picsum.photos/600/900?random=11', caption: 'Son maçımızdan heyecanlı anlar 🤾‍♀️' }],
+      akademi: [{ type: 'image', url: 'https://picsum.photos/600/900?random=12', caption: 'Akademi ailemiz 🏆' }]
+    };
 
     document.addEventListener('DOMContentLoaded', () => {
 
-      /* 1. MOBİL BURGER MENÜ */
-      const burger = document.querySelector('.hamburger');
+      // BURGER MENU
+      const burger = document.getElementById('hamburger-btn');
       const navLinks = document.querySelector('.nav-links');
-
-      if (burger && navLinks) {
-        burger.addEventListener('click', () => {
-          navLinks.classList.toggle('active');
-        });
-
-        document.querySelectorAll('.nav-links a').forEach(link => {
-          link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-          });
-        });
+      if (burger) {
+        burger.addEventListener('click', () => navLinks.classList.toggle('active'));
       }
 
-      /* 2. TAKIM KADROLARI (GÖSTER / GİZLE) */
-      const toggleButtons = document.querySelectorAll('.roster-btn');
-
-      toggleButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-          e.preventDefault();
-          const card = button.closest('.team-card');
-          const roster = card ? card.querySelector('.roster-container') : null;
-
-          if (roster) {
-            const currentDisplay = window.getComputedStyle(roster).display;
-
-            if (currentDisplay === 'none') {
-              roster.setAttribute('style', 'display: flex !important; flex-direction: column !important;');
-              button.textContent = 'Kadro Gizle 👆';
-              button.style.backgroundColor = '#ffd166';
-              button.style.color = '#0b0c10';
-            } else {
-              roster.setAttribute('style', 'display: none !important;');
-              button.textContent = 'Kadro Göster 👇';
-              button.style.backgroundColor = 'transparent';
-              button.style.color = '#c5a059';
-            }
+      // KADRO GÖSTER/GİZLE
+      document.querySelectorAll('.roster-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const card = btn.closest('.team-card');
+          const roster = card.querySelector('.roster-container');
+          if (roster.style.display === 'flex') {
+            roster.style.display = 'none';
+            btn.textContent = 'Kadro Göster 👇';
+          } else {
+            roster.style.display = 'flex';
+            btn.textContent = 'Kadro Gizle 👆';
           }
         });
       });
 
-      /* 3. MODAL VE SEKME KONTROLLERİ */
-      const adminModal = document.getElementById('admin-modal');
-      const openAdminBtn = document.getElementById('open-admin-btn');
-      const closeAdminBtns = document.querySelectorAll('.close-admin');
-      const loginBox = document.getElementById('login-box');
-      const panelBox = document.getElementById('panel-box');
+      // YÖNETİCİ GİRİŞİ
       const loginBtn = document.getElementById('login-btn');
       const logoutBtn = document.getElementById('logout-btn');
       const adminPassInput = document.getElementById('admin-pass');
       const loginError = document.getElementById('login-error');
+      const loginBox = document.getElementById('login-box');
+      const panelBox = document.getElementById('panel-box');
 
-      const newsTitleInput = document.getElementById('news-title');
-      const newsContentInput = document.getElementById('news-content');
-      const addNewsBtn = document.getElementById('add-news-btn');
-      const newsContainer = document.getElementById('news-container');
-
-      const photoTitleInput = document.getElementById('photo-title');
-      const photoUrlInput = document.getElementById('photo-url');
-      const addPhotoBtn = document.getElementById('add-photo-btn');
-      const bizContainer = document.getElementById('biz-container');
-
-      // Modalı Aç/Kapat
-      openAdminBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        adminModal.style.display = 'flex';
-      });
-
-      closeAdminBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          adminModal.style.display = 'none';
-        });
-      });
-
-      // Sekmeler Arası Geçiş
-      const tabBtns = document.querySelectorAll('.tab-btn');
-      const tabContents = document.querySelectorAll('.tab-content');
-
-      tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          tabBtns.forEach(b => b.classList.remove('active'));
-          tabContents.forEach(c => c.classList.remove('active'));
-
-          btn.classList.add('active');
-          document.getElementById(btn.dataset.tab).classList.add('active');
-        });
-      });
-
-      /* 4. ŞİFRE KONTROLÜ VE OTOMATİK SİLME */
       loginBtn.addEventListener('click', () => {
-        if (adminPassInput.value === 'sinanebrar1551') {
+        if (adminPassInput.value === 'admin') {
           isAdminLoggedIn = true;
           loginBox.style.display = 'none';
           panelBox.style.display = 'block';
           loginError.style.display = 'none';
           adminPassInput.value = '';
           loadNews();
-          loadPhotos();
         } else {
           loginError.style.display = 'block';
-          adminPassInput.value = ''; // Hatalı girilince şifreyi otomatik temizler
-          adminPassInput.focus();   // Kullanıcı için kutuyu aktif yapar
-        }
-      });
-
-      adminPassInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          loginBtn.click();
+          adminPassInput.value = '';
+          adminPassInput.focus();
         }
       });
 
@@ -1080,126 +947,178 @@
         isAdminLoggedIn = false;
         panelBox.style.display = 'none';
         loginBox.style.display = 'block';
-        adminModal.style.display = 'none';
         loadNews();
-        loadPhotos();
       });
 
-      /* 5. DİNAMİK İÇERİK YÖNETİMİ */
-      window.loadNews = () => {
-        const savedNews = JSON.parse(localStorage.getItem('seha_news')) || [];
-        newsContainer.innerHTML = '';
+      // HABER YÖNETİMİ
+      const addNewsBtn = document.getElementById('add-news-btn');
+      addNewsBtn.addEventListener('click', () => {
+        const title = document.getElementById('news-title').value.trim();
+        const content = document.getElementById('news-content').value.trim();
 
-        if (savedNews.length === 0) {
-          newsContainer.innerHTML = '<p style="text-align: center; color: #aaa; font-size: 0.9rem;">Yakında yeni duyurular eklenecektir.</p>';
+        if (title && content) {
+          const newsList = JSON.parse(localStorage.getItem('seha_news')) || [];
+          newsList.unshift({ title, content, date: new Date().toLocaleDateString('tr-TR') });
+          localStorage.setItem('seha_news', JSON.stringify(newsList));
+
+          document.getElementById('news-title').value = '';
+          document.getElementById('news-content').value = '';
+          loadNews();
+          alert('Duyuru eklendi!');
+        }
+      });
+
+      // BİZ / MEDYA YÖNETİMİ
+      const addMediaBtn = document.getElementById('add-media-btn');
+      addMediaBtn.addEventListener('click', () => {
+        const cat = document.getElementById('media-category').value;
+        const fileInput = document.getElementById('media-file');
+        const caption = document.getElementById('media-caption').value.trim();
+
+        if (fileInput.files.length === 0) {
+          alert('Lütfen bir fotoğraf veya video seçin.');
           return;
         }
 
-        savedNews.forEach((news, index) => {
-          const deleteBtnHtml = isAdminLoggedIn ? `<button class="delete-btn" onclick="deleteNews(${index})">Sil 🗑️</button>` : '';
-          const newsHtml = `
-            <div class="news-card">
-              ${deleteBtnHtml}
-              <h3>${news.title}</h3>
-              <p>${news.content}</p>
-              <span class="news-date">📅 ${news.date}</span>
-            </div>
-          `;
-          newsContainer.innerHTML += newsHtml;
-        });
-      };
+        const file = fileInput.files[0];
+        const reader = new FileReader();
 
-      addNewsBtn.addEventListener('click', () => {
-        const title = newsTitleInput.value.trim();
-        const content = newsContentInput.value.trim();
+        reader.onload = function(e) {
+          const mediaType = file.type.startsWith('video') ? 'video' : 'image';
+          const savedMedia = JSON.parse(localStorage.getItem('seha_story_media')) || defaultMedia;
 
-        if (title && content) {
-          const savedNews = JSON.parse(localStorage.getItem('seha_news')) || [];
-          savedNews.unshift({
-            title: title,
-            content: content,
-            date: new Date().toLocaleDateString('tr-TR')
-          });
+          if (!savedMedia[cat]) savedMedia[cat] = [];
+          savedMedia[cat].unshift({ type: mediaType, url: e.target.result, caption: caption });
 
-          localStorage.setItem('seha_news', JSON.stringify(savedNews));
-          loadNews();
+          localStorage.setItem('seha_story_media', JSON.stringify(savedMedia));
+          document.getElementById('media-caption').value = '';
+          fileInput.value = '';
+          alert('Medya eklendi!');
+        };
 
-          newsTitleInput.value = '';
-          newsContentInput.value = '';
-          alert('Duyuru başarıyla eklendi!');
-        } else {
-          alert('Lütfen tüm alanları doldurun.');
-        }
+        reader.readAsDataURL(file);
       });
-
-      window.deleteNews = (index) => {
-        if (confirm('Bu duyuruyu silmek istediğinize emin misiniz?')) {
-          const savedNews = JSON.parse(localStorage.getItem('seha_news')) || [];
-          savedNews.splice(index, 1);
-          localStorage.setItem('seha_news', JSON.stringify(savedNews));
-          loadNews();
-        }
-      };
-
-      window.loadPhotos = () => {
-        const savedPhotos = JSON.parse(localStorage.getItem('seha_photos')) || [];
-        
-        bizContainer.innerHTML = `
-          <div class="biz-card">
-            <img src="https://picsum.photos/600/400?random=10" alt="Antrenmanlarımız">
-            <h3>Antrenmanlarımız</h3>
-          </div>
-          <div class="biz-card">
-            <img src="https://picsum.photos/600/400?random=11" alt="Maçtan Kalanlar">
-            <h3>Maçtan Kalanlar</h3>
-          </div>
-        `;
-
-        savedPhotos.forEach((photo, index) => {
-          const deleteBtnHtml = isAdminLoggedIn ? `<button class="delete-btn" onclick="deletePhoto(${index})">Sil 🗑️</button>` : '';
-          const photoHtml = `
-            <div class="biz-card">
-              ${deleteBtnHtml}
-              <img src="${photo.url}" alt="${photo.title}">
-              <h3>${photo.title}</h3>
-            </div>
-          `;
-          bizContainer.innerHTML += photoHtml;
-        });
-      };
-
-      addPhotoBtn.addEventListener('click', () => {
-        const title = photoTitleInput.value.trim();
-        const url = photoUrlInput.value.trim();
-
-        if (title && url) {
-          const savedPhotos = JSON.parse(localStorage.getItem('seha_photos')) || [];
-          savedPhotos.unshift({ title: title, url: url });
-
-          localStorage.setItem('seha_photos', JSON.stringify(savedPhotos));
-          loadPhotos();
-
-          photoTitleInput.value = '';
-          photoUrlInput.value = '';
-          alert('Fotoğraf galeriye eklendi!');
-        } else {
-          alert('Lütfen fotoğraf başlığı ve linki girin.');
-        }
-      });
-
-      window.deletePhoto = (index) => {
-        if (confirm('Bu fotoğrafı silmek istediğinize emin misiniz?')) {
-          const savedPhotos = JSON.parse(localStorage.getItem('seha_photos')) || [];
-          savedPhotos.splice(index, 1);
-          localStorage.setItem('seha_photos', JSON.stringify(savedPhotos));
-          loadPhotos();
-        }
-      };
 
       loadNews();
-      loadPhotos();
-
     });
+
+    // HABERLERİ YÜKLE
+    function loadNews() {
+      const newsContainer = document.getElementById('news-container');
+      const newsList = JSON.parse(localStorage.getItem('seha_news')) || [];
+      newsContainer.innerHTML = '';
+
+      if (newsList.length === 0) {
+        newsContainer.innerHTML = '<p style="text-align:center; color:#888;">Henüz duyuru bulunmuyor.</p>';
+        return;
+      }
+
+      newsList.forEach((news, idx) => {
+        const delBtn = isAdminLoggedIn ? `<button class="delete-btn" style="position:absolute; top:10px; right:10px;" onclick="deleteNews(${idx})">Sil 🗑️</button>` : '';
+        newsContainer.innerHTML += `
+          <div class="news-card">
+            ${delBtn}
+            <h3>${news.title}</h3>
+            <p>${news.content}</p>
+            <span class="news-date">📅 ${news.date}</span>
+          </div>
+        `;
+      });
+    }
+
+    function deleteNews(idx) {
+      if (confirm('Duyuruyu silmek istediğinize emin misiniz?')) {
+        const newsList = JSON.parse(localStorage.getItem('seha_news')) || [];
+        newsList.splice(idx, 1);
+        localStorage.setItem('seha_news', JSON.stringify(newsList));
+        loadNews();
+      }
+    }
+
+    // INSTAGRAM STORY MODAL KONTROLLERİ
+    function openStoryModal(category) {
+      const savedMedia = JSON.parse(localStorage.getItem('seha_story_media')) || defaultMedia;
+      currentStoryList = savedMedia[category] || defaultMedia[category];
+      
+      if (currentStoryList.length === 0) {
+        alert('Bu kategoride henüz içerik yok.');
+        return;
+      }
+
+      currentStoryIndex = 0;
+      document.getElementById('story-modal').style.display = 'flex';
+      renderStory();
+    }
+
+    function renderStory() {
+      clearInterval(storyTimer);
+      const mediaBox = document.getElementById('story-media-box');
+      const captionBox = document.getElementById('story-caption');
+      const progressBars = document.getElementById('story-progress-bars');
+
+      const currentItem = currentStoryList[currentStoryIndex];
+
+      // PROGRESS BARS OLUŞTUR
+      progressBars.innerHTML = '';
+      currentStoryList.forEach((_, idx) => {
+        const bar = document.createElement('div');
+        bar.className = 'story-progress-bar';
+        const fill = document.createElement('div');
+        fill.className = 'story-progress-fill';
+
+        if (idx < currentStoryIndex) fill.style.width = '100%';
+        if (idx === currentStoryIndex) fill.id = 'current-fill';
+
+        bar.appendChild(fill);
+        progressBars.appendChild(bar);
+      });
+
+      // MEDYA GÖSTERİMİ
+      if (currentItem.type === 'video') {
+        mediaBox.innerHTML = `<video src="${currentItem.url}" autoplay playsinline id="story-video"></video>`;
+      } else {
+        mediaBox.innerHTML = `<img src="${currentItem.url}" alt="Story">`;
+      }
+
+      captionBox.textContent = currentItem.caption || '';
+
+      // ZAMANLAYICI / ANİMASYON
+      let progress = 0;
+      const fill = document.getElementById('current-fill');
+
+      storyTimer = setInterval(() => {
+        progress += 2;
+        if (fill) fill.style.width = progress + '%';
+
+        if (progress >= 100) {
+          nextStory();
+        }
+      }, 100);
+    }
+
+    function nextStory() {
+      if (currentStoryIndex < currentStoryList.length - 1) {
+        currentStoryIndex++;
+        renderStory();
+      } else {
+        closeStoryModal();
+      }
+    }
+
+    function prevStory() {
+      if (currentStoryIndex > 0) {
+        currentStoryIndex--;
+        renderStory();
+      } else {
+        renderStory();
+      }
+    }
+
+    function closeStoryModal() {
+      clearInterval(storyTimer);
+      document.getElementById('story-modal').style.display = 'none';
+      document.getElementById('story-media-box').innerHTML = '';
+    }
   </script>
 </body>
 </html>
