@@ -72,11 +72,11 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-[#32612D] selection:text-white">
 
-    <!-- HEADER / NAVIGATION (Yönetici butonu kaldırıldı, tamamen gizli) -->
+    <!-- HEADER / NAVIGATION (Gizli Tıklama Korumalı Logo) -->
     <header class="sticky top-0 z-40 glass-panel border-b border-[#32612D]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Brand Logo -->
-            <a href="#" class="flex items-center gap-3 group">
+            <!-- Brand Logo (3 Kez Arka Arkaya Tıklayınca Yönetici Paneli Şifre Ekranı Açılır) -->
+            <div onclick="handleSecretLogoClick()" class="flex items-center gap-3 group cursor-pointer select-none" title="SinanEbrar Akademi">
                 <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#c5a059] via-[#967431] to-[#785b20] flex items-center justify-center text-black font-black text-xl shadow-lg shadow-[#32612D]/20 group-hover:scale-105 transition-transform duration-300">
                     SE
                 </div>
@@ -84,7 +84,7 @@
                     <span class="text-xl font-extrabold tracking-tight block text-white group-hover:text-[#c5a059] transition-colors">SinanEbrar</span>
                     <span class="text-xs font-semibold tracking-widest text-[#c5a059] uppercase block -mt-1">Hentbol Akademi</span>
                 </div>
-            </a>
+            </div>
 
             <!-- Navigation Links -->
             <nav class="hidden md:flex items-center gap-8">
@@ -243,7 +243,7 @@
                     <i class="fa-solid fa-lock text-[#c5a059]"></i> Yönetici Girişi
                 </h3>
             </div>
-            <p class="text-xs text-gray-400 mb-4">Gizli link ile giriş yaptınız. Lütfen yönetici şifresini girin.</p>
+            <p class="text-xs text-gray-400 mb-4">Gizli giriş noktası kullanıldı. Lütfen yönetici şifresini girin.</p>
             <input type="password" id="adminPasswordInput" placeholder="Yönetici Şifresi" class="w-full px-3 py-2.5 rounded-lg bg-brand-dark border border-[#32612D] text-white text-sm focus:outline-none focus:border-[#c5a059] mb-4">
             <button onclick="verifyAdminPassword()" class="w-full py-2.5 bg-[#c5a059] hover:bg-[#b08b47] text-black font-bold rounded-lg text-xs transition-colors border border-[#32612D]">
                 Giriş Yap
@@ -473,11 +473,21 @@
         let currentViewerTeamIdx = 0;
         let currentStorySlideIdx = 0;
 
-        // Check if URL has secret admin trigger
-        function checkSecretUrlParam() {
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('yonetim') === 'gir') {
+        // Gizli Logo Tıklama Sayacı (3 Kez Peş Peşe Tıklayınca Açılır)
+        let logoClickCount = 0;
+        let logoClickTimer = null;
+
+        function handleSecretLogoClick() {
+            logoClickCount++;
+            clearTimeout(logoClickTimer);
+            
+            if (logoClickCount === 3) {
+                logoClickCount = 0;
                 document.getElementById('adminAuthModal').classList.remove('hidden');
+            } else {
+                logoClickTimer = setTimeout(() => {
+                    logoClickCount = 0;
+                }, 1000); // 1 saniye içinde 3 kez tıklanmalı
             }
         }
 
@@ -604,6 +614,7 @@
             const pwd = document.getElementById('adminPasswordInput').value;
             if (pwd === ADMIN_PASSWORD) {
                 document.getElementById('adminAuthModal').classList.add('hidden');
+                document.getElementById('adminPasswordInput').value = '';
                 toggleAdminDrawer();
             } else {
                 alert('Hatalı şifre! Lütfen tekrar deneyin.');
@@ -820,7 +831,6 @@
             renderStories();
             renderAnnouncements();
             renderTeams();
-            checkSecretUrlParam(); // Gizli link kontrolü
         });
     </script>
 </body>
