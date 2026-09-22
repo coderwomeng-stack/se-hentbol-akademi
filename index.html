@@ -45,7 +45,7 @@
             background: rgba(18, 24, 36, 0.75);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid #32612D; /* Belirttiğin yeşil tonu çerçeve */
+            border: 1px solid #32612D;
         }
         .gold-gradient-text {
             background: linear-gradient(135deg, #f3e5ab 0%, #c5a059 50%, #967431 100%);
@@ -72,7 +72,7 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-[#32612D] selection:text-white">
 
-    <!-- HEADER / NAVIGATION -->
+    <!-- HEADER / NAVIGATION (Yönetici butonu kaldırıldı, tamamen gizli) -->
     <header class="sticky top-0 z-40 glass-panel border-b border-[#32612D]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
@@ -95,11 +95,6 @@
                 <a href="#takimlar" class="text-sm font-medium text-gray-300 hover:text-[#c5a059] transition-colors">Takımlarımız</a>
                 <a href="#instagram" class="text-sm font-medium text-gray-300 hover:text-[#c5a059] transition-colors">Instagram</a>
             </nav>
-
-            <!-- Management Drawer Trigger Button -->
-            <button onclick="openAdminAuthModal()" class="px-4 py-2 text-xs font-bold rounded-lg bg-[#c5a059] hover:bg-[#b08b47] text-black transition-all flex items-center gap-2 shadow-lg border border-[#32612D]">
-                <i class="fa-solid fa-user-gear"></i> Yönetici
-            </button>
         </div>
     </header>
 
@@ -172,7 +167,7 @@
             </div>
         </section>
 
-        <!-- SOLE INSTAGRAM ADRESİ SECTION -->
+        <!-- INSTAGRAM ADRESİ SECTION -->
         <section id="instagram" class="py-16 border-t border-[#32612D]">
             <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <div class="glass-panel p-10 rounded-3xl relative overflow-hidden group">
@@ -247,11 +242,8 @@
                 <h3 class="text-base font-bold text-white flex items-center gap-2">
                     <i class="fa-solid fa-lock text-[#c5a059]"></i> Yönetici Girişi
                 </h3>
-                <button onclick="closeAdminAuthModal()" class="text-gray-400 hover:text-white">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
             </div>
-            <p class="text-xs text-gray-400 mb-4">Yönetici paneline erişmek için lütfen şifreyi girin.</p>
+            <p class="text-xs text-gray-400 mb-4">Gizli link ile giriş yaptınız. Lütfen yönetici şifresini girin.</p>
             <input type="password" id="adminPasswordInput" placeholder="Yönetici Şifresi" class="w-full px-3 py-2.5 rounded-lg bg-brand-dark border border-[#32612D] text-white text-sm focus:outline-none focus:border-[#c5a059] mb-4">
             <button onclick="verifyAdminPassword()" class="w-full py-2.5 bg-[#c5a059] hover:bg-[#b08b47] text-black font-bold rounded-lg text-xs transition-colors border border-[#32612D]">
                 Giriş Yap
@@ -481,6 +473,14 @@
         let currentViewerTeamIdx = 0;
         let currentStorySlideIdx = 0;
 
+        // Check if URL has secret admin trigger
+        function checkSecretUrlParam() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('yonetim') === 'gir') {
+                document.getElementById('adminAuthModal').classList.remove('hidden');
+            }
+        }
+
         // Render Team Stories Highlights
         function renderStories() {
             const container = document.getElementById('storyCirclesContainer');
@@ -600,20 +600,10 @@
             document.getElementById('storyViewer').classList.add('hidden');
         }
 
-        // Admin Password Verification Modal
-        function openAdminAuthModal() {
-            document.getElementById('adminPasswordInput').value = '';
-            document.getElementById('adminAuthModal').classList.remove('hidden');
-        }
-
-        function closeAdminAuthModal() {
-            document.getElementById('adminAuthModal').classList.add('hidden');
-        }
-
         function verifyAdminPassword() {
             const pwd = document.getElementById('adminPasswordInput').value;
             if (pwd === ADMIN_PASSWORD) {
-                closeAdminAuthModal();
+                document.getElementById('adminAuthModal').classList.add('hidden');
                 toggleAdminDrawer();
             } else {
                 alert('Hatalı şifre! Lütfen tekrar deneyin.');
@@ -713,7 +703,7 @@
             const fileInput = document.getElementById('newStoryFile');
 
             if (!title) return alert('Lütfen hikaye başlığı / notu girin.');
-            if (!fileInput.files || !fileInput.files0) return alert('Lütfen galerinizden bir fotoğraf seçin.');
+            if (!fileInput.files || !fileInput.files[0]) return alert('Lütfen galerinizden bir fotoğraf seçin.');
 
             const file = fileInput.files[0];
             const reader = new FileReader();
@@ -731,7 +721,6 @@
 
                 state.teams[teamIdx].stories.unshift(newStory);
 
-                // Eğer ilk hikaye ise veya kapak yoksa kapak fotoğrafını da otomatik güncelle
                 if (!state.teams[teamIdx].coverImg) {
                     state.teams[teamIdx].coverImg = e.target.result;
                 }
@@ -746,7 +735,7 @@
             reader.readAsDataURL(file);
         }
 
-        // Load Highlight Editor (Cover photo & stories list for deletion)
+        // Load Highlight Editor
         function loadHighlightEditor() {
             const teamIdx = document.getElementById('highlightTeamSelector').value || 0;
             const team = state.teams[teamIdx];
@@ -831,6 +820,7 @@
             renderStories();
             renderAnnouncements();
             renderTeams();
+            checkSecretUrlParam(); // Gizli link kontrolü
         });
     </script>
 </body>
