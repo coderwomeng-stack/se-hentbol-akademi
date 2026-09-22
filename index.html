@@ -235,19 +235,30 @@
         </div>
     </div>
 
-    <!-- ADMIN PASSWORD AUTH MODAL -->
-    <div id="adminAuthModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md hidden flex items-center justify-center p-4">
-        <div class="w-full max-w-sm glass-panel p-6 rounded-2xl shadow-2xl">
-            <div class="flex items-center justify-between mb-4">
-                <h3 class="text-base font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-lock text-[#c5a059]"></i> Yönetici Girişi
-                </h3>
-            </div>
-            <p class="text-xs text-gray-400 mb-4">Gizli giriş noktası kullanıldı. Lütfen yönetici şifresini girin.</p>
-            <input type="password" id="adminPasswordInput" placeholder="Yönetici Şifresi" class="w-full px-3 py-2.5 rounded-lg bg-brand-dark border border-[#32612D] text-white text-sm focus:outline-none focus:border-[#c5a059] mb-4">
-            <button onclick="verifyAdminPassword()" class="w-full py-2.5 bg-[#c5a059] hover:bg-[#b08b47] text-black font-bold rounded-lg text-xs transition-colors border border-[#32612D]">
-                Giriş Yap
+    <!-- MODERN YÖNETİCİ GİRİŞ MODAL (GÖZÜKÜR KARAKTERLER) -->
+    <div id="adminAuthModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="w-full max-w-md glass-panel p-8 rounded-3xl shadow-2xl border border-[#32612D] text-center relative">
+            <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg">
+                <i class="fa-solid fa-xmark"></i>
             </button>
+            <div class="w-16 h-16 mx-auto rounded-2xl bg-[#32612D]/30 border border-[#32612D] flex items-center justify-center text-[#c5a059] text-2xl shadow-lg mb-4">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3 class="text-xl font-extrabold text-white mb-2">Yönetici Girişi</h3>
+            <p class="text-xs text-gray-400 mb-6">Lütfen devam etmek için şifrenizi girin. (Karakterler açık olarak görünür)</p>
+            
+            <div class="space-y-4">
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-[#c5a059]">
+                        <i class="fa-solid fa-lock"></i>
+                    </span>
+                    <!-- Şifre açık görünmesi için type="text" yapıldı -->
+                    <input type="text" id="adminPasswordInput" placeholder="Şifreyi Girin" class="w-full pl-11 pr-4 py-3.5 rounded-xl bg-brand-dark border border-[#32612D] text-white text-sm font-semibold tracking-wider focus:outline-none focus:border-[#c5a059] shadow-inner">
+                </div>
+                <button onclick="verifyAdminPassword()" class="w-full py-3.5 bg-gradient-to-r from-[#c5a059] to-[#967431] hover:from-[#b08b47] hover:to-[#846328] text-black font-extrabold rounded-xl text-sm transition-all shadow-lg shadow-[#c5a059]/20 border border-[#c5a059]">
+                    Sisteme Giriş Yap
+                </button>
+            </div>
         </div>
     </div>
 
@@ -469,11 +480,9 @@
             ]
         };
 
-        // Active Story Viewer State
         let currentViewerTeamIdx = 0;
         let currentStorySlideIdx = 0;
 
-        // Gizli Logo Tıklama Sayacı (3 Kez Peş Peşe Tıklayınca Açılır)
         let logoClickCount = 0;
         let logoClickTimer = null;
 
@@ -487,8 +496,13 @@
             } else {
                 logoClickTimer = setTimeout(() => {
                     logoClickCount = 0;
-                }, 1000); // 1 saniye içinde 3 kez tıklanmalı
+                }, 1000);
             }
+        }
+
+        function closeAuthModal() {
+            document.getElementById('adminAuthModal').classList.add('hidden');
+            document.getElementById('adminPasswordInput').value = '';
         }
 
         // Render Team Stories Highlights
@@ -580,7 +594,6 @@
             document.getElementById('storyImage').src = story.img;
             document.getElementById('storyCaption').innerText = story.caption;
 
-            // Render Progress Bars
             const progressContainer = document.getElementById('storyProgressBars');
             progressContainer.innerHTML = team.stories.map((s, idx) => `
                 <div class="h-1 flex-1 bg-white/20 rounded-full overflow-hidden">
@@ -659,7 +672,6 @@
             }
         }
 
-        // Populate Team Selectors in Admin
         function populateTeamSelectors() {
             const optionsHtml = state.teams.map((t, idx) => `<option value="${idx}">${t.name}</option>`).join('');
             document.getElementById('teamSelector').innerHTML = optionsHtml;
@@ -667,7 +679,6 @@
             document.getElementById('highlightTeamSelector').innerHTML = optionsHtml;
         }
 
-        // Load Team Player Inputs into Editor
         function loadTeamEditor() {
             const teamIdx = document.getElementById('teamSelector').value || 0;
             const team = state.teams[teamIdx];
@@ -691,7 +702,6 @@
             `).join('');
         }
 
-        // Save Player Changes
         function savePlayerChanges() {
             const teamIdx = document.getElementById('teamSelector').value || 0;
             const team = state.teams[teamIdx];
@@ -707,7 +717,6 @@
             alert('Kadro başarıyla güncellendi!');
         }
 
-        // Upload Story to Specific Team from Gallery
         function uploadStoryFromGallery() {
             const teamIdx = document.getElementById('storyTeamSelector').value;
             const title = document.getElementById('newStoryTitle').value;
@@ -746,7 +755,6 @@
             reader.readAsDataURL(file);
         }
 
-        // Load Highlight Editor
         function loadHighlightEditor() {
             const teamIdx = document.getElementById('highlightTeamSelector').value || 0;
             const team = state.teams[teamIdx];
@@ -773,7 +781,6 @@
             `).join('');
         }
 
-        // Update Team Cover Photo
         function updateTeamCover() {
             const teamIdx = document.getElementById('highlightTeamSelector').value || 0;
             const fileInput = document.getElementById('newCoverFile');
@@ -795,7 +802,6 @@
             reader.readAsDataURL(file);
         }
 
-        // Delete Individual Story
         function deleteStory(teamIdx, storyId) {
             if (!confirm('Bu hikayeyi silmek istediğinize emin misiniz?')) return;
 
@@ -807,7 +813,6 @@
             alert('Hikaye başarıyla silindi!');
         }
 
-        // Add Announcement
         function addAnnouncement() {
             const title = document.getElementById('newAnnounceTitle').value;
             const text = document.getElementById('newAnnounceContent').value;
@@ -826,7 +831,6 @@
             alert('Duyuru yayınlandı!');
         }
 
-        // Init App
         document.addEventListener('DOMContentLoaded', () => {
             renderStories();
             renderAnnouncements();
